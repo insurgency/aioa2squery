@@ -1,1 +1,1 @@
-📡 [asyncio](https://docs.python.org/3/library/asyncio.html) implementation of the Any to Server (A2S) [query protocol](https://developer.valvesoftware.com/wiki/Server_queries)
+:satellite: [asyncio](https://docs.python.org/3/library/asyncio.html) implementation of the Any to Server (A2S) [query protocol](https://developer.valvesoftware.com/wiki/Server_queries)
