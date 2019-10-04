@@ -25,7 +25,7 @@ $ docker run --rm -it docker.pkg.github.com/insurgency/aioa2squery/a2squery:late
 <div align="center">
 
 <!--suppress HtmlRequiredAltAttribute -->
-<img width="600" src="https://insurgency.github.io/aioa2squery/_images/demo.svg">
+<img width="900" src="https://insurgency.github.io/aioa2squery/_images/demo.svg">
 
 </div>
 
