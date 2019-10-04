@@ -143,7 +143,7 @@ class A2SQueryContext:
         return await self.execute_query(host, port, timeout, func='a2s_query_players')
 
     async def query_rules(self, host: Optional[str] = '127.0.0.1', port: Optional[int] = QueryPort.SRCDS,
-                          timeout: Optional[float] = None) -> Dict:
+                          timeout: Optional[float] = None) -> Tuple[A2SRulesResponse, int]:
         """
         .. warning::
             Older games, usually on :valve-wiki:`Source SDK 2007<Source_2007>`, may reply with a truncated response. In
