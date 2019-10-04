@@ -32,7 +32,7 @@ $ docker run --rm -it docker.pkg.github.com/insurgency/aioa2squery/a2squery:late
 ## Documentation
 
 <!-- https://docs.readthedocs.io/en/latest/custom_domains.html -->
-Documentation is currently available on GitHub pages [here](https://docs.insurgency.gg/aioa2squery/).
+Documentation is currently available on GitHub pages [here](https://insurgency.github.io/aioa2squery/).
 
 #### Donate
 
