@@ -615,6 +615,9 @@ class A2SRulesResponse(A2SQueryResponse):
 
         self.rules = dict()
 
+    def __getitem__(self, key):
+        return self.rules[key]
+
     def marshal_field_data(self, assembled_response: A2SBytesIO, field: Field):
         if field.name == 'rules':
             # Is there one more byte that can be read from current buffer position?
