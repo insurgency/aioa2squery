@@ -94,6 +94,13 @@ jobs:
         with:
           name: JSON documentation
           path: ./docs/_build/json/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: latest
+          BRANCH: docs
+          FOLDER: docs/_build/html/
   freeze:
     name: Build frozen binary
     needs: [test, lint]
