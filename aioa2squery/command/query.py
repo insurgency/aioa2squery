@@ -182,11 +182,10 @@ async def query(loop: AbstractEventLoop):
     elapsed_time = timedelta(seconds=round(now - before))
     percentage = successes / total_hosts * 100 if total_hosts > 0 else 0
 
-    if successes > 0:
-        if cmd_args.players:
-            logging.info(f"Total of {players:,d} players online across {successes:,d} servers")
-        elif cmd_args.ping and successes >= 1:
-            logging.info(f"Average ping of {round(total_ping / successes)}ms from {successes:,d} servers")
+    logging.info(f"Completed {successes:,d}/{total_hosts:,d} ({percentage:.1f}%) queries in {elapsed_time}")
 
-    logging.info(f"Completed {successes:,d}/{total_hosts:,d} ({percentage:.1f}%) queries in {elapsed_time}"
-                 f" and found {total_players:,d} players online across {0:,d} game servers")
+    if successes > 0:
+        if cmd_args.info or cmd_args.players:
+            logging.info(f"Found a total of {total_players:,d} players online")
+        elif cmd_args.ping and successes >= 1:
+            logging.info(f"Average server ping of {round(total_ping / successes)}ms")
