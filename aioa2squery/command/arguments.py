@@ -58,14 +58,6 @@ class HelpFormatter(argparse.RawDescriptionHelpFormatter):
 
         super().add_usage(usage, actions, groups, prefix)
 
-    def _format_usage(self, *args, **kwargs):
-        usage = super()._format_usage(*args, **kwargs)
-
-        # Capitalize usage prefix
-        usage = usage[:0] + usage[0:].capitalize()
-
-        return usage
-
     def _format_action(self, action: argparse.Action):
         parts = super()._format_action(action)
 
