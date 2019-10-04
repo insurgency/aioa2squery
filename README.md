@@ -29,6 +29,28 @@ $ docker run --rm -it docker.pkg.github.com/insurgency/aioa2squery/a2squery:late
 
 </div>
 
+## Example
+
+It's very easy to get started in writing concurrent queries:
+
+```python
+import asyncio
+from ipaddress import ip_network
+from aioa2squery import A2SQueryContext
+
+async def main():
+    client = A2SQueryContext()
+    queries = [client.query_info(host=str(ip)) for ip in ip_network('155.133.234.0/24')]
+    completed, _ = await asyncio.wait(queries, timeout=3)
+
+    for response in completed:
+        if not response.exception():
+            response, ping = response.result()
+            print(f"Found a {response.game} game in {ping}ms")
+
+asyncio.run(main())
+```
+
 ## Documentation
 
 <!-- https://docs.readthedocs.io/en/latest/custom_domains.html -->
