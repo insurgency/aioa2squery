@@ -99,7 +99,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: latest
-          BRANCH: docs
+          BRANCH: gh-pages
           FOLDER: docs/_build/html/
   freeze:
     name: Build frozen binary
