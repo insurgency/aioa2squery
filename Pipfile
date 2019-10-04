@@ -1,0 +1,45 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+# Code Coverage
+coverage = "*"
+recommonmark = "*"
+# Sphinx Doc
+sphinx = "*"
+sphinx-autobuild = "*"
+sphinxcontrib-programoutput = "*"
+sphinxcontrib-spelling = "*" # https://sphinxcontrib-spelling.readthedocs.io/en/stable/install.html#installing-sphinxcontrib-spelling
+# Linters & Static Analysis
+pylint = "*"
+pydocstyle = "*"
+pycodestyle = "*"
+restructuredtext-lint = "*"
+doc8 = "*"
+flake8 = "*"
+bandit = "*"
+# Testing
+pytest = "*"
+tox = "*"
+pytest-cov = "*"
+# Extras
+uvloop = "*"
+argcomplete = "*"
+# Packaging
+pyinstaller = "*"
+# PyInstaller platform-specific dependencies
+pywin32-ctypes = ">=0.2.0"
+pefile = ">=2017.8.1"
+# Documentation
+sphinx-markdown-builder = "*"
+sphinx-markdown-parser = "*"
+macholib = "*"
+wheel = "*"
+mypy = "*"
+
+[packages]
+
+[requires]
+python_version = "3.7"

@@ -1,0 +1,26 @@
+# Sphinx Documentation
+docs/
+*.rst
+
+# Unit Tests
+tests/
+
+# Pipenv
+Pipfile*
+
+# Markdown
+*.md
+*.markdown
+
+# Dotfiles & hidden subdirectories
+.*
+.*/
+
+# Manifest Files
+*.in
+
+# Docker Compose
+docker-compose.y?ml
+
+# Other
+Dangerfile

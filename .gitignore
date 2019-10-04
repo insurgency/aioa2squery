@@ -1,0 +1,22 @@
+# Sphinx documentation build output
+docs/*build/
+
+# Test command output
+*.log
+*.csv
+*.txt
+
+# Test coverage
+.coverage
+coverage.xml
+coverage/
+
+# Egg Info
+*.egg-info/
+
+# Build output and distrobution files
+build/
+dist/
+
+# PyInstaller specifications
+*.spec
