@@ -1,13 +1,27 @@
 import argparse
 import logging
 import re
-from argparse import Action, _ArgumentGroup
+import sys
 
-from typing import Iterable, Text, List, Optional
+from typing import Iterable, Text, List
 
 from ipaddress import ip_network
 
 from .. import QueryPort
+
+# Localization/GNU gettext
+try:
+    from gettext import gettext as _, ngettext
+except ImportError:
+    def _(message):
+        return message
+
+
+    def ngettext(singular, plural, n):
+        if n == 1:
+            return singular
+        else:
+            return plural
 
 
 def port_range_expression(port_range_expr: str) -> Iterable[int]:
@@ -49,12 +63,17 @@ class ArgumentParser(argparse.ArgumentParser):
 
         return arg_line.split()
 
+    def error(self, message: Text):
+        self.print_usage(sys.stderr)
+        args = {'prog': self.prog, 'message': message}
+        self.exit(2, _('Error: %(message)s\n') % args)
+
 
 # noinspection PyProtectedMember
 class HelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_usage(self, usage, actions, groups, prefix=None):
         if prefix is None:
-            prefix = 'Usage: '
+            prefix = _('Usage: ')
 
         super().add_usage(usage, actions, groups, prefix)
 
@@ -83,8 +102,8 @@ parser.add_argument('-l', '--log-level', type=str.upper, help=argparse.SUPPRESS,
 subparsers = parser.add_subparsers(title='Commands', dest='command', required=True, metavar='<command>')
 
 # Query sub-command/subparser
-_ = "Query game servers"
-query_subparser = subparsers.add_parser('query', help=_, description=_, formatter_class=HelpFormatter)
+_help = "Query game servers"
+query_subparser = subparsers.add_parser('query', help=_help, description=_help, formatter_class=HelpFormatter)
 
 # Query type argument group
 query_type_arg_group = query_subparser.add_argument_group(title="Query Type",
@@ -113,12 +132,12 @@ query_app_group.add_argument('--source', '--source-engine', action='store_true',
 query_app_group.add_argument('--goldsrc', '--goldsource', action='store_true', help="Perform GoldSrc queries")
 
 # Listen sub-command/subparser
-_ = "Run a static query server"
-listen_subparser = subparsers.add_parser('listen', description=_, help=_, formatter_class=HelpFormatter)
+_help = "Run a static query server"
+listen_subparser = subparsers.add_parser('listen', description=_help, help=_help, formatter_class=HelpFormatter)
 
 # Proxy sub-command/subparser
-_ = "Run a reverse proxy server"
-proxy_subparser = subparsers.add_parser('proxy', description=_, help=_, formatter_class=HelpFormatter)
+_help = "Run a reverse proxy server"
+proxy_subparser = subparsers.add_parser('proxy', description=_help, help=_help, formatter_class=HelpFormatter)
 
 # Finally parse arguments
 cmd_args = parser.parse_args()
