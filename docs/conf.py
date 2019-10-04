@@ -17,6 +17,8 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.doctest',
     'sphinx.ext.extlinks',
+    # See: https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
+    # See: https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/
     'sphinx.ext.githubpages',
     'sphinx.ext.intersphinx',
     # 'sphinx.ext.linkcode',
