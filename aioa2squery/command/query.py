@@ -93,8 +93,8 @@ def print_query_result(ping_task: Task):
                     Visibility: {response.server_visibility}
                     Players: {response.players - response.bots}/{response.max_players} ({response.bots} bots)
                     VAC: {'yes' if response.vac else 'no'}
-                    Environment: {response.server_environment}
-                    Type: {response.server_type}
+                    Environment: {response.server_environment!s}
+                    Type: {response.server_type!s}
                     Keywords: {response.keywords}
                     """.rstrip()
                 ))
