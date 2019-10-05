@@ -1,11 +1,12 @@
 import argparse
+import ipaddress
+import itertools
 import logging
 import re
 import sys
+from argparse import Namespace
 
-from typing import Iterable, Text, List
-
-from ipaddress import ip_network
+from typing import Iterable, Text, List, Union, Sequence, Any, Optional
 
 from .. import QueryPort
 
@@ -44,6 +45,16 @@ def port_range_expression(port_range_expr: str) -> Iterable[int]:
         raise argparse.ArgumentTypeError
     else:
         return port_list
+
+
+def ip_network(address: str):
+    if '-' in address:
+        # Process network range notation in a special way:
+        address_range = map(ipaddress.ip_address, address.split('-', maxsplit=1))
+        return list(ipaddress.summarize_address_range(*address_range))
+    else:
+        # Otherwise apply normal CIDR notation parsing
+        return [ipaddress.ip_network(address)]
 
 
 class ArgumentParser(argparse.ArgumentParser):
@@ -86,6 +97,13 @@ class HelpFormatter(argparse.RawDescriptionHelpFormatter):
         return parts
 
 
+class ChainAction(argparse.Action):
+    # Avoid list flattening at all costs!
+    def __call__(self, parser: ArgumentParser, namespace: Namespace, values: Union[Text, Sequence[Any], None],
+                 option_string: Optional[Text] = ...):
+        setattr(namespace, self.dest, list(itertools.chain.from_iterable(values)))
+
+
 # Main argument parser
 parser = ArgumentParser(prog='a2squery', fromfile_prefix_chars='@', formatter_class=HelpFormatter,
                         description="Command-line utility for the A2S game server query protocol")
@@ -118,7 +136,8 @@ query_type_group.add_argument('--ping', action='store_true', help="Query server 
 query_subparser.add_argument('-p', '--ports', help="Destination ports", metavar='PORTS', type=port_range_expression,
                              default={int(QueryPort.SRCDS)})
 query_subparser.add_argument('-t', '--timeout', default=3, type=float, help="Query timeout duration", metavar='SECONDS')
-query_subparser.add_argument('networks', nargs='+', metavar='CIDR', help="Network to query", type=ip_network)
+query_subparser.add_argument('networks', action=ChainAction, nargs='+', metavar='CIDR', help="Network to query",
+                             type=ip_network)
 # Some additional super "secret" developer query options
 query_subparser.add_argument('--csv', action='store_true', default=False, help=argparse.SUPPRESS)
 query_subparser.add_argument('-c', '--concurrency', default=50, type=int, help=argparse.SUPPRESS)
