@@ -39,12 +39,14 @@ from ipaddress import ip_network
 from aioa2squery import A2SQueryContext
 
 async def main():
+    # Start off with a query context (query client) 
     client = A2SQueryContext()
     queries = [client.query_info(host=str(ip)) for ip in ip_network('155.133.234.0/24')]
     completed, _ = await asyncio.wait(queries, timeout=3)
 
     for response in completed:
         if not response.exception():
+            # Successful query responses return a 2 tuple of the data and ping
             response, ping = response.result()
             print(f"Found a {response.game} game in {ping}ms")
 
