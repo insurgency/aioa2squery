@@ -20,6 +20,8 @@ restructuredtext-lint = "*"
 doc8 = "*"
 flake8 = "*"
 bandit = "*"
+# Typing
+mypy = "*"
 # Testing
 pytest = "*"
 tox = "*"
@@ -29,12 +31,11 @@ uvloop = "*"
 argcomplete = "*"
 # Packaging
 pyinstaller = "*"
+wheel = "*"
 # PyInstaller platform-specific dependencies
 pywin32-ctypes = ">=0.2.0"
 pefile = ">=2017.8.1"
 macholib = "*"
-wheel = "*"
-mypy = "*"
 
 [packages]
 
