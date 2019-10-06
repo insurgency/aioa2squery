@@ -7,7 +7,11 @@ setup(
     version='0.0.1',
     author='hink',
     url='https://github.com/insurgency/aioa2squery',
-    packages=find_packages(),
+    packages=find_packages(
+        exclude=[
+            'tests',
+        ],
+    ),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
