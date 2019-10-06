@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 # Code Coverage
 coverage = "*"
-recommonmark = "*"
 # Sphinx Doc
 sphinx = "*"
 sphinx-autobuild = "*"
