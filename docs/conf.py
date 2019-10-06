@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.abspath('../'))
 project = 'aioa2squery'
 # noinspection PyShadowingBuiltins
 copyright = '2019, insurgency.gg'
-author = 'hink'
+author = 'insurgency.gg'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
