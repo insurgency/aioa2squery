@@ -32,9 +32,6 @@ pyinstaller = "*"
 # PyInstaller platform-specific dependencies
 pywin32-ctypes = ">=0.2.0"
 pefile = ">=2017.8.1"
-# Documentation
-sphinx-markdown-builder = "*"
-sphinx-markdown-parser = "*"
 macholib = "*"
 wheel = "*"
 mypy = "*"

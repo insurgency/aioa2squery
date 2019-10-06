@@ -1,9 +1,6 @@
 import os
 import sys
 
-from sphinx_markdown_builder import MarkdownBuilder
-from sphinx_markdown_parser.parser import MarkdownParser
-
 # Add project root to sys.path for autodoc discoverability
 sys.path.insert(0, os.path.abspath('../'))
 
@@ -57,8 +54,3 @@ if 'spelling' in sys.argv:
     extensions.append('sphinxcontrib.spelling')
 
 spelling_lang = 'en_US'
-
-
-def setup(app):
-    app.add_source_suffix('.md', 'markdown')
-    app.add_source_parser(MarkdownParser)
