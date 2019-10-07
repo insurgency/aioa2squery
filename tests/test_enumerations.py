@@ -1,8 +1,13 @@
 from enum import IntEnum
 from unittest import TestCase
 
-from aioa2squery import TheShipGameMode, ServerType, ServerEnvironment, ServerVisibility
-from aioa2squery.enumerations import *
+from aioa2squery import (
+    TheShipGameMode,
+    ServerType,
+    ServerEnvironment,
+    ServerVisibility,
+    OrdinalByteRepresentationMixin,
+)
 
 
 class TestEnumerationMixins(TestCase):

@@ -4,7 +4,7 @@ from unittest import TestCase
 from random import getrandbits, uniform, choices
 from string import ascii_uppercase, digits
 
-from aioa2squery.buffers import A2SBytesIO
+from aioa2squery import A2SBytesIO
 
 
 def random_string():

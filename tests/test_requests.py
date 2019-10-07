@@ -2,7 +2,7 @@ from dataclasses import is_dataclass
 from unittest import TestCase
 
 from aioa2squery.context import REQUEST_PACKET_SPLIT_SIZE
-from aioa2squery.requests import (
+from aioa2squery import (
     request,
 
     A2SQueryRequest,
