@@ -25,6 +25,7 @@ $ docker run --rm -it docker.pkg.github.com/insurgency/aioa2squery/a2squery:late
 <div align="center">
 
 <!--suppress HtmlRequiredAltAttribute -->
+<!-- a2squery query -t .3 --info --csv 155.133.234.0/24 185.25.183.0/24 208.78.167.0/24 -->
 ![](https://insurgency.github.io/aioa2squery/_images/demo.svg)
 
 </div>
