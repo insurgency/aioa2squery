@@ -20,3 +20,6 @@ dist/
 
 # PyInstaller specifications
 *.spec
+
+# ASCIInema Recordings
+*.cast
