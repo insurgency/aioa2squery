@@ -23,3 +23,6 @@ dist/
 
 # ASCIInema Recordings
 *.cast
+
+# Profiler Data
+*.dat
