@@ -2,7 +2,6 @@ import asyncio
 import contextvars
 import csv
 import logging
-import os
 
 from typing import Generator, Tuple, Set
 
@@ -24,7 +23,6 @@ from .. import (
     ResponseError,
     A2SRulesResponse,
 )
-
 from .arguments import cmd_args
 
 __all__ = (

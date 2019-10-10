@@ -4,9 +4,10 @@ import itertools
 import logging
 import re
 import sys
-from argparse import Namespace
 
 from typing import Iterable, Text, List, Union, Sequence, Any, Optional
+
+from argparse import Namespace
 
 from .. import QueryPort
 

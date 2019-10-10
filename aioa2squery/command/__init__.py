@@ -1,8 +1,6 @@
 import asyncio
 import logging
 
-from datetime import timedelta
-
 from .arguments import cmd_args
 from .proxy import *
 from .query import *
