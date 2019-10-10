@@ -14,9 +14,6 @@ __all__ = (
 
 
 def main():
-    # Set logging level with a basic config to the configured level
-    logging.basicConfig(format='%(levelname)s: %(message)s', level=cmd_args.log_level or logging.INFO)
-
     try:
         import uvloop
         logging.debug("Setting default event loop implementation to uvloop")
