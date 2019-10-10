@@ -4,10 +4,13 @@ import csv
 import logging
 import os
 
+from typing import Generator, Tuple, Set
+
 from asyncio import Task, AbstractEventLoop
 from dataclasses import fields, asdict
 from datetime import timedelta
-from itertools import product, chain
+from ipaddress import IPv4Address
+from itertools import chain
 from string import printable
 from sys import stdout
 from textwrap import dedent
@@ -146,6 +149,14 @@ def print_query_result(ping_task: Task):
         sem.release()
 
 
+def hosts(networks, ports: Set[int]) -> Generator[Tuple[IPv4Address, int], None, None]:
+    """A more suitable implementation of :class:`itertools.product`"""
+
+    for network in networks:
+        for port in ports:
+            yield (network, port)
+
+
 async def query(loop: AbstractEventLoop):
     # Count up the total amount of hosts and target ports being queried
     total_hosts = sum(n.num_addresses for n in cmd_args.networks) * len(cmd_args.ports)
@@ -167,7 +178,7 @@ async def query(loop: AbstractEventLoop):
 
     query_client = A2SQueryContext(timeout=cmd_args.timeout, game_engine=Engine.GOLDSRC if cmd_args.goldsrc else Engine.SOURCE)
 
-    for host, port in product(chain.from_iterable(cmd_args.networks), cmd_args.ports):
+    for host, port in hosts(chain.from_iterable(cmd_args.networks), cmd_args.ports):
         await sem.acquire()
 
         task = asyncio.create_task(query_host(query_client, host=str(host), port=port))
