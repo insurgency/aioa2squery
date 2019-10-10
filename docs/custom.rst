@@ -2,13 +2,13 @@ Crafting Custom Queries
 =======================
 
 Ideally the majority of library users shouldn't need to craft any custom
-queries or responses, but since the query protocol is so divergent and nuanced
-across many games and Source Engine versions the library provides some
-low-level facilities to easily craft, send custom queries for your particular
-needs without having to do any dirty monkey patching.
+queries or responses, but since the query protocol is so divergent across
+different games and Source Engine versions some low-level facilities are
+provided to allow crafting and sending custom queries without having to do any
+dirty monkey patching.
 
-Firstly a bytes-buffer class is included that inherits :class:`io.BytesIO`
-and provides read/write methods for the different :valve-wiki:`packet field
+Firstly, a bytes-buffer class is included that inherits :class:`io.BytesIO`
+and provides read and write methods for the different :valve-wiki:`packet field
 data types <Server_queries#Data_Types>`. This can be useful for any custom
 low-level packet crafting or handling with the query protocol or even uses
 outside of this library.
@@ -46,7 +46,8 @@ Helpful Enumeration Mixins
 --------------------------
 
 If you are doing any type of custom query crafting you may want to make your
-``Byte`` enumerations or whatnot.
+custom enumerations include some types of common behavior. The following are
+some enumeration mixins that are provided by the library:
 
 Automatic :meth:`object.__str__` method generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -19,8 +19,8 @@ class BooleanEnumMixin(object):
 # noinspection PyUnresolvedReferences
 class OrdinalByteRepresentationMixin(object):
     """
-    Enumeration mixin to implement :meth:`__repr__() <object.__repr__>` displaying it's the character of the member's
-    ordinal.
+    An enumeration mixin to implement :meth:`__repr__() <object.__repr__>` using the character of the member's ordinal
+    value.
 
     >>> from enum import IntEnum
     >>> class SomeEnum(OrdinalByteRepresentationMixin, IntEnum):
@@ -50,7 +50,13 @@ class SimpleMemberNameStringMixin(object):
 # noinspection PyProtectedMember,PyUnresolvedReferences,PyArgumentList
 class TryLowercaseValueWhenMissingMixin(object):
     """
-    Enumeration mixin to TODO
+    An enumeration mixin that allows either the uppercase or lowercase ordinal character value to be used.
+
+    >>> from enum import IntEnum
+    >>> class SomeEnum(TryLowercaseValueWhenMissingMixin, IntEnum):
+    >>>     DEDICATED_SERVER = ord('x')
+    >>>
+    >>> SomeEnum('X') == SomeEnum('x')
     """
 
     @classmethod
