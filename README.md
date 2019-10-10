@@ -61,6 +61,10 @@ asyncio.run(main())
 <!-- https://docs.readthedocs.io/en/latest/custom_domains.html -->
 Documentation is currently available on GitHub pages [here](https://insurgency.github.io/aioa2squery/).
 
+## Performance Benchmarks
+
+There's no formal performance benchmarks yet, but in simple programs I'm able to get well over 3,000+ pps/queries per second. If you're looking for significantly better performance than this library is able to provide you can look at @rumblefrog's [Go implementation](https://github.com/rumblefrog/go-a2s) or the [native reference library implementation](https://developer.valvesoftware.com/wiki/Source_Server_Query_Library). Realistically though I recommend you keep client query rates well bellow your system's configured `ulimits` for better reliability.
+
 #### Donate
 
 <sub>Donations help financially support the developers who create and work on our open source projects.</sub>
