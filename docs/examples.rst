@@ -165,52 +165,47 @@ All of this can be achieved fairly easily using some of
 .. testcode::
 
     import asyncio
-    from contextvars import ContextVar, Context
+    from functools import partial
     from aioa2squery import A2SQueryContext
     from ipaddress import ip_network
-
-    # Context variable for storing current address being queried
-    context = ContextVar('host')
+    
     # Set for tracking currently running queries
     query_tasks = set()
-
+    
     async def start():
-       # A query client instance is needed as always
-       query_client = A2SQueryContext(timeout=1.5)
-       # Using a semaphore we can limit the concurrency of our queries
-       sem = asyncio.Semaphore(25)
-
-       # Callback function for printing completed query results
-       def print_query_result(query_task):
-           # Print results for queries that completed without errors...
-           if not query_task.exception():
-               response, _ = query_task.result()
-               ip = context.get()
-               players = "{0.players}/{0.max_players}".format(response)
-               print(f"{ip}: {response.name} ({players})")
-
-           # Remove finished task and release semaphore
-           query_tasks.remove(query_task)
-           sem.release()
-
-       # Loop over hosts in this IPv4 network
-       for host in ip_network('208.78.164.0/22'):
-           # Store host being queried into context variable
-           context.set(host)
-           # Suspend loop while we're unable to queue additional queries
-           await sem.acquire()
-
-           # Schedule the query as a task
-           query = query_client.query_info(str(host))
-           task = asyncio.create_task(query)
-           # Attach our done callback for printing task results
-           task.add_done_callback(print_query_result)
-           # Add the task to the set
-           query_tasks.add(task)
-
-       # Await remaining tasks to complete
-       await asyncio.gather(*query_tasks, return_exceptions=True)
-
+        # A query client instance is needed as always
+        query_client = A2SQueryContext(timeout=1.5)
+        # Using a semaphore we can limit the concurrency of our queries
+        sem = asyncio.Semaphore(25)
+        
+        # Callback function for printing completed query results
+        def print_query_result(host, query_task):
+            # Print results for queries that completed without errors...
+            if not query_task.exception():
+                response, _ = query_task.result()
+                players = "{0.players}/{0.max_players}".format(response)
+                print(f"{host}: {response.name} ({players})")
+        
+            # Remove finished task and release semaphore
+            query_tasks.remove(query_task)
+            sem.release()
+        
+        # Loop over hosts in this IPv4 network
+        for ip in ip_network('208.78.164.0/22'):
+            # Suspend loop while we're unable to queue additional queries
+            await sem.acquire()
+            
+            # Schedule the query as a task
+            query = query_client.query_info(str(ip))
+            task = asyncio.create_task(query)
+            # Attach our done callback for printing task results
+            task.add_done_callback(partial(print_query_result, ip))
+            # Add the task to the set
+            query_tasks.add(task)
+        
+        # Await remaining tasks to complete
+        await asyncio.gather(*query_tasks, return_exceptions=True)
+    
     asyncio.run(start())
 
 
