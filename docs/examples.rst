@@ -166,9 +166,9 @@ All of this can be achieved fairly easily using some of
 
     import asyncio
     from functools import partial
-    from aioa2squery import A2SQueryContext
     from ipaddress import ip_network
-    
+    from aioa2squery import A2SQueryContext
+
     # Set for tracking currently running queries
     query_tasks = set()
     
