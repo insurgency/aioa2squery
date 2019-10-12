@@ -149,9 +149,10 @@ query_subparser.add_argument('-c', '--concurrency', default=50 if platform.syste
 query_app_group = query_subparser.add_argument_group(title='App & Engine Type',
                                                      description="App ID or game engine version to query")
 query_app_group.add_argument('--app', dest='app_id', default=None, type=int, help="Query specific App ID", metavar='ID')
-query_app_group.add_argument('--source', '--source-engine', action='store_true',
-                             help="Perform Source Engine queries (default)")
-query_app_group.add_argument('--goldsrc', '--goldsource', action='store_true', help="Perform GoldSrc queries")
+query_engine_group = query_app_group.add_mutually_exclusive_group()
+query_engine_group.add_argument('--source', '--source-engine', action='store_true',
+                                help="Perform Source Engine queries (default)")
+query_engine_group.add_argument('--goldsrc', '--goldsource', action='store_true', help="Perform GoldSrc queries")
 
 # Listen sub-command/subparser
 _help = "Run a static query server"
