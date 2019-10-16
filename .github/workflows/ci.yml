@@ -154,7 +154,9 @@ jobs:
       - name: Build Docker image
         # language=BASH
         run: >-
-          docker build --pull
+          docker build
+          --pull
+          --build-arg PYTHON_VERSION=$(jq -j '._meta.requires.python_version' ./Pipfile.lock)
           --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:${GITHUB_REF#refs/heads/}"
           --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:$(date +%s)"
           --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:$GITHUB_SHA"
