@@ -2,7 +2,6 @@ import argparse
 import ipaddress
 import itertools
 import logging
-import platform
 import re
 import sys
 
@@ -142,8 +141,7 @@ query_subparser.add_argument('networks', action=ChainAction, nargs='+', metavar=
                              type=ip_network)
 # Some additional super "secret" developer query options
 query_subparser.add_argument('--csv', action='store_true', default=False, help=argparse.SUPPRESS)
-query_subparser.add_argument('-c', '--concurrency', default=50 if platform.system() == 'Windows' else 300, type=int,
-                             help=argparse.SUPPRESS)
+query_subparser.add_argument('-c', '--concurrency', default=250, type=int, help=argparse.SUPPRESS)
 
 # Query app argument group
 query_app_group = query_subparser.add_argument_group(title='App & Engine Type',
