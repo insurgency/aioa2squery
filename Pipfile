@@ -26,7 +26,6 @@ pytest = "*"
 tox = "*"
 pytest-cov = "*"
 # Extras
-uvloop = "<0.13"
 argcomplete = "*"
 # Packaging
 pyinstaller = "*"
