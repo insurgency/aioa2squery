@@ -12,6 +12,7 @@ WORKDIR /uvloop/
 RUN pip3 install -r ./requirements.dev.txt
 RUN make -j2
 RUN pip3 install ./
+RUN pip3 uninstall -y -r ./requirements.dev.txt
 RUN rm -rf /uvloop/
 ADD ./ /aioa2squery/
 RUN pip3 install /aioa2squery/[speedups]
