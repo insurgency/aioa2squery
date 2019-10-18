@@ -49,13 +49,17 @@ def port_range_expression(port_range_expr: str) -> Iterable[int]:
 
 
 def ip_network(address: str):
-    if '-' in address:
-        # Process network range notation in a special way:
-        address_range = map(ipaddress.ip_address, address.split('-', maxsplit=1))
-        return list(ipaddress.summarize_address_range(*address_range))
-    else:
-        # Otherwise apply normal CIDR notation parsing
-        return [ipaddress.ip_network(address)]
+    try:
+        if '-' in address:
+            # Process network range notation in a special way:
+            address_range = map(ipaddress.IPv4Address, address.split('-', maxsplit=1))
+
+            return list(ipaddress.summarize_address_range(*address_range))
+        else:
+            # Otherwise apply normal CIDR notation parsing
+            return [ipaddress.IPv4Network(address)]
+    except (ipaddress.AddressValueError, ipaddress.NetmaskValueError, TypeError, ValueError):
+        raise argparse.ArgumentTypeError(f"invalid IPv4 network value {address}")
 
 
 class ArgumentParser(argparse.ArgumentParser):
