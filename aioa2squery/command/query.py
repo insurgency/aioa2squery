@@ -1,6 +1,6 @@
 import asyncio
-import contextvars
 import csv
+import functools
 import logging
 
 from typing import Generator, Tuple, Set
@@ -31,9 +31,6 @@ __all__ = (
 
 successes = errors = players = total_ping = total_players = total_servers = 0
 tasks = set()
-# Some contextvars for storing information related to our print callback function
-remote_addr_var, remote_port_var = contextvars.ContextVar('remote_addr'), contextvars.ContextVar('remote_port')
-query_host_var = contextvars.Context()
 
 # Create list of CSV field names by dynamically parsing non-protected members of the A2S_INFO response dataclass
 csv_field_names = ['host', 'port', 'ping'] + [f.name for f in fields(A2SInfoResponse) if not f.name.startswith('_')]
@@ -56,9 +53,7 @@ async def query_host(query_client, host, port):
         return await query_client.query_ping(host, port)
 
 
-def print_query_result(ping_task: Task):
-    host, port = remote_addr_var.get(), remote_port_var.get()
-
+def print_query_result(host, port, ping_task: Task):
     try:
         response, ping = ping_task.result()
 
@@ -134,9 +129,9 @@ def print_query_result(ping_task: Task):
 
             print(f"{host}:{port}: {response}ms")
     except asyncio.TimeoutError:
-        logging.debug(f"{remote_addr_var.get()}:{remote_port_var.get()}: query timed out")
+        logging.debug(f"{host}:{port}: query timed out")
     except ResponseError as err:
-        logging.debug(f"{remote_addr_var.get()}:{remote_port_var.get()}: {err}")
+        logging.debug(f"{host}:{port}: {err}")
     else:
         global successes
         # Increment the total of successfully completed queries for reporting a final summary at the end
@@ -181,8 +176,7 @@ async def query(loop: AbstractEventLoop):
 
         task = asyncio.create_task(query_host(query_client, host=str(host), port=port))
         tasks.add(task)
-        remote_addr_var.set(str(host)), remote_port_var.set(port)
-        task.add_done_callback(print_query_result)
+        task.add_done_callback(functools.partial(print_query_result, str(host), port))
 
     await asyncio.gather(*tasks, return_exceptions=True)
 
