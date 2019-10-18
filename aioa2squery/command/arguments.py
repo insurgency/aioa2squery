@@ -34,18 +34,20 @@ def port_range_expression(port_range_expr: str) -> Iterable[int]:
             if '-' in port:
                 start_port, end_port = port.split('-', 1)
                 start_port, end_port = int(start_port), int(end_port)
-                assert 0 <= start_port < end_port <= 2 ** 16 - 1
+                if not 0 <= start_port < end_port <= 2 ** 16 - 1:
+                    raise ValueError
 
                 port_list.update(range(start_port, end_port + 1))
             else:
                 port = int(port)
-                assert 0 <= port <= 2 ** 16 - 1
+                if not 0 <= port <= 2 ** 16 - 1:
+                    raise ValueError
 
                 port_list.add(port)
-    except (ValueError, AssertionError):
-        raise argparse.ArgumentTypeError
-    else:
-        return port_list
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"invalid port expression {port_range_expr}")
+
+    return port_list
 
 
 def ip_network(address: str):
