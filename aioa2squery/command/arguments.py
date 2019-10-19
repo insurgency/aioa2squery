@@ -170,4 +170,4 @@ proxy_subparser = subparsers.add_parser('proxy', description=_help, help=_help, 
 cmd_args = parser.parse_args()
 
 # Set logging level with a basic config to the configured level
-logging.basicConfig(format='%(levelname)s: %(message)s', level=cmd_args.log_level or logging.INFO)
+logging.basicConfig(format='%(levelname)s (%(name)s): %(message)s', level=cmd_args.log_level or logging.INFO)
