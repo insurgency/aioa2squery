@@ -30,6 +30,8 @@ __all__ = (
 )
 
 successes = errors = players = total_ping = total_players = total_servers = 0
+# Concurrency limit semaphore
+sem = None
 tasks = set()
 
 # Create list of CSV field names by dynamically parsing non-protected members of the A2S_INFO response dataclass
