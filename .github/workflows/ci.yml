@@ -28,7 +28,6 @@ jobs:
           name: Unittest coverage report
           path: ./coverage/
       - name: Upload unittest coverage report to Codecov
-        continue-on-error: true
         uses: codecov/codecov-action@v1.0.3
         with:
           name: Unittest coverage report
