@@ -114,9 +114,6 @@ class ChainAction(argparse.Action):
 # Main argument parser
 parser = ArgumentParser(prog='a2squery', fromfile_prefix_chars='@', formatter_class=HelpFormatter,
                         description="Command-line utility for the A2S game server query protocol")
-# Monkey patch fromfile_prefix_chars parsing with fancier reading capabilities for main parser
-# parser.convert_arg_line_to_args = convert_arg_line_to_args
-# Title-ize parser's positional and optional arguments title text
 
 # Main parser arguments
 parser.add_argument('-v', '--version', action='version', version='%(prog)s')  # FIXME
