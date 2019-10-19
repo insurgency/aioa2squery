@@ -104,11 +104,14 @@ class HelpFormatter(argparse.RawDescriptionHelpFormatter):
         return parts
 
 
-class ChainAction(argparse.Action):
-    # Avoid list flattening at all costs!
-    def __call__(self, arg_parser: ArgumentParser, namespace: Namespace, values: Union[Text, Sequence[Any], None],
+class ChainAndCollapseIPNetworksAction(argparse.Action):
+    def __call__(self, arg_parser: ArgumentParser, namespace: Namespace, networks: Union[Text, Sequence[Any], None],
                  option_string: Optional[Text] = ...):
-        setattr(namespace, self.dest, list(itertools.chain.from_iterable(values)))
+        # Flatten iterable of iterable of IPv4 network objects
+        networks = itertools.chain.from_iterable(networks)
+        # Collapse overlapping IPv4 networks in order avoid querying duplicate IP addresses
+        networks = list(ipaddress.collapse_addresses(networks))
+        setattr(namespace, self.dest, networks)
 
 
 # Main argument parser
@@ -140,8 +143,8 @@ query_type_group.add_argument('--ping', action='store_true', help="Query server 
 query_subparser.add_argument('-p', '--ports', help="Destination ports", metavar='PORTS', type=port_range_expression,
                              default={int(QueryPort.SRCDS)})
 query_subparser.add_argument('-t', '--timeout', default=3, type=float, help="Query timeout duration", metavar='SECONDS')
-query_subparser.add_argument('networks', action=ChainAction, nargs='+', metavar='CIDR', help="Network to query",
-                             type=ip_network)
+query_subparser.add_argument('networks', action=ChainAndCollapseIPNetworksAction, nargs='+', metavar='CIDR',
+                             help="Network to query", type=ip_network)
 # Some additional super "secret" developer query options
 query_subparser.add_argument('--csv', action='store_true', default=False, help=argparse.SUPPRESS)
 query_subparser.add_argument('-c', '--concurrency', default=250, type=int, help=argparse.SUPPRESS)
