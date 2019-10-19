@@ -1,4 +1,4 @@
-from dataclasses import fields, is_dataclass, dataclass
+from dataclasses import fields, dataclass
 from bz2 import compress
 from zlib import crc32
 

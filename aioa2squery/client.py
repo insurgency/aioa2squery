@@ -3,7 +3,7 @@ import socket
 
 from asyncio import AbstractEventLoop
 
-from typing import Optional, Tuple, Dict
+from typing import Optional, Tuple
 
 from .decorators import deprecated
 from .protocol import A2SQueryProtocol
