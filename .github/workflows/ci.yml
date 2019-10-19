@@ -21,6 +21,7 @@ jobs:
           coverage3 run ./setup.py test
           coverage3 report
           coverage3 html
+          coverage3 xml
       - name: Upload unittest coverage report as artifact
         uses: actions/upload-artifact@master
         with:
