@@ -169,7 +169,8 @@ async def query(loop: AbstractEventLoop):
     global sem
     sem = asyncio.BoundedSemaphore(cmd_args.concurrency)
 
-    query_client = A2SQueryContext(timeout=cmd_args.timeout, game_engine=Engine.GOLDSRC if cmd_args.goldsrc else Engine.SOURCE)
+    query_client = A2SQueryContext(timeout=cmd_args.timeout,
+                                   game_engine=Engine.GOLDSRC if cmd_args.goldsrc else Engine.SOURCE)
 
     for host, port in hosts(chain.from_iterable(cmd_args.networks), cmd_args.ports):
         await sem.acquire()
