@@ -106,7 +106,7 @@ class HelpFormatter(argparse.RawDescriptionHelpFormatter):
 
 class ChainAction(argparse.Action):
     # Avoid list flattening at all costs!
-    def __call__(self, parser: ArgumentParser, namespace: Namespace, values: Union[Text, Sequence[Any], None],
+    def __call__(self, arg_parser: ArgumentParser, namespace: Namespace, values: Union[Text, Sequence[Any], None],
                  option_string: Optional[Text] = ...):
         setattr(namespace, self.dest, list(itertools.chain.from_iterable(values)))
 
