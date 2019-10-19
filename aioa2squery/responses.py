@@ -92,7 +92,7 @@ class A2SQueryResponse:
 
     def __init__(self, **kwargs):
         for field in dataclasses.fields(self):
-            if field.name is not '_message_header' and field.default is MISSING:
+            if field.name != '_message_header' and field.default is MISSING:
                 # Default all dataclass member variables to null
                 setattr(self, field.name, None)
 
