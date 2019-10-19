@@ -26,3 +26,9 @@ Game Engine Versions
 
 .. autoclass:: aioa2squery.Engine
     :members:
+
+Other
+-----
+
+.. autoclass:: aioa2squery.QueryPort
+    :members:

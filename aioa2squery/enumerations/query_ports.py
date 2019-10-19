@@ -15,5 +15,7 @@ class QueryPort(IntEnum):
     HLTV = SOURCETV
     """An alias for :attr:`SOURCETV`"""
     INSURGENCY_SANDSTORM_QUERY_PORT = 27_131
-    """Standard Insurgency Sandstorm ``-QueryPort`` number per the official 
-    `Basic Server Setup Guide <https://steamcommunity.com/app/581320/discussions/1/1750106661705710565/>`_"""
+    """
+    Standard Insurgency Sandstorm ``-QueryPort`` number per the official `Basic Server Setup Guide
+    <https://steamcommunity.com/app/581320/discussions/1/1750106661705710565/>`_
+    """
