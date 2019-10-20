@@ -1,4 +1,4 @@
-name: Run CI Workflow
+name: Run CI
 on: push
 jobs:
   test:
