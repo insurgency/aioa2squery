@@ -20,9 +20,9 @@ class TestA2SQueryIO(TestCase):
     def test_write_and_read_normal_byte(self):
         original_value = getrandbits(8)
 
-        self.buffer.write_short(original_value)
+        self.buffer.write_byte(original_value)
         self.buffer.seek(0)
-        unpacked_value = self.buffer.read_short()
+        unpacked_value = self.buffer.read_byte()
 
         self.assertEqual(unpacked_value, original_value)
 
