@@ -173,7 +173,10 @@ class A2SQueryContext:
         .. _A2A_PING: https://wiki.teamfortress.com/wiki/Dedicated_server
 
         .. warning::
-            According to :valve-wiki:`Valve<Valve>` (see :valve-wiki:`Talk Page <Talk:Server_queries#A2A_PING_no_longer_supported.3F>`), |A2A_PING|_ is no longer supported on :valve-wiki:`Counter Strike: Source <Counter-Strike:_Source>` and :valve-wiki:`Team Fortress 2<Team Fortress 2>` :valve-wiki:`servers <Source_Dedicated_Server>`, and is considered a deprecated feature.
+            According to :valve-wiki:`Valve<Valve>` (see :valve-wiki:`Talk Page
+            <Talk:Server_queries#A2A_PING_no_longer_supported.3F>`), |A2A_PING|_ is no longer supported on
+            :valve-wiki:`Counter Strike: Source <Counter-Strike:_Source>` and :valve-wiki:`Team Fortress 2
+            <Team Fortress 2>` :valve-wiki:`servers <Source_Dedicated_Server>`, and is considered a deprecated feature.
 
         :param host: Host of the server to query
         :param port: Port of server to query
