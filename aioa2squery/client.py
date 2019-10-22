@@ -84,11 +84,13 @@ class A2SQueryContext:
         played, and the number of players
 
         .. note::
+
             :valve-wiki:`Rag Doll Kung Fu <Rag_Doll_Kung_Fu>` :valve-wiki:`servers <Source_Dedicated_Server>` always
             return :attr:`ServerType.UNKNOWN <aioa2squery.ServerType.UNKNOWN>` for
             :attr:`aioa2squery.A2SInfoResponse.server_type` in the response.
 
         .. note::
+
             :valve-wiki:`HLTV <SourceTV>` servers may respond with a late request that is either incomplete or incorrect
             if the number of slots is 255.
 
@@ -113,13 +115,16 @@ class A2SQueryContext:
         .. _uptime: https://wikipedia.org/wiki/Uptime
 
         .. note::
+
             `SourceTV`_ does not respond to this query.
 
         .. note::
+
             When a player is trying to connect to a server, they are recorded in the number of players. However, they
             will not be in the list of player information.
 
         .. warning::
+
             :valve-wiki:`Counter-Strike: Global Offensive Dedicated Server
             <Counter-Strike:_Global_Offensive_Dedicated_Servers>` by default returns only max players and server
             `uptime`_. You have to change server :valve-wiki:`CVar <ConVar>` :code:`"host_players_show"` in
@@ -146,6 +151,7 @@ class A2SQueryContext:
                           timeout: Optional[float] = None) -> Tuple[A2SRulesResponse, int]:
         """
         .. warning::
+
             Older games, usually on :valve-wiki:`Source SDK 2007<Source_2007>`, may reply with a truncated response. In
             this case, the data may be terminated in the middle of a string or in between a name and value.
 
@@ -173,6 +179,7 @@ class A2SQueryContext:
         .. _A2A_PING: https://wiki.teamfortress.com/wiki/Dedicated_server
 
         .. warning::
+
             According to :valve-wiki:`Valve<Valve>` (see :valve-wiki:`Talk Page
             <Talk:Server_queries#A2A_PING_no_longer_supported.3F>`), |A2A_PING|_ is no longer supported on
             :valve-wiki:`Counter Strike: Source <Counter-Strike:_Source>` and :valve-wiki:`Team Fortress 2

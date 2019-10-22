@@ -40,6 +40,7 @@ class SimpleMemberNameStringMixin(object):
     Enumeration mixin to implement :meth:`__str__`  from using it's own member name
 
     .. note::
+
         Performs simple string substitution and titles case of member name string.
     """
 
