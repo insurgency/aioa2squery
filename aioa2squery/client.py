@@ -1,8 +1,6 @@
 import asyncio
 import socket
 
-from asyncio import AbstractEventLoop
-
 from typing import Optional, Tuple
 
 from .decorators import deprecated
@@ -31,17 +29,17 @@ class A2SQueryContext:
     :param packet_split_size: How big to make query before splitting query request into additional packets. Steam uses
      a packet size of 1400 bytes (the default).
     :type packet_split_size: int
-    :param loop: An event loop to use
-    :type loop: asyncio.AbstractEventLoop
     :param use_compression: Whether or not to apply compression on multi-packeted query requests
     :type use_compression: bool
+
+    :raises RuntimeError: If query client is initialized outside of an event loop/coroutine function
     """
 
-    def __init__(self, game_engine: Engine = Engine.SOURCE, app_id: Optional[int] = None,
+    def __init__(self, *, game_engine: Engine = Engine.SOURCE, app_id: Optional[int] = None,
                  packet_split_size: Optional[int] = 0x04E0, timeout: Optional[float] = 10.0,
-                 use_compression: bool = False, loop: Optional[AbstractEventLoop] = None):
+                 use_compression: bool = False):
+        self._loop = asyncio.get_running_loop()
         self.timeout = timeout
-        self._loop = asyncio.get_running_loop()  # FIXME?
         self.use_compression = use_compression
         self.packet_split_size = packet_split_size
 
