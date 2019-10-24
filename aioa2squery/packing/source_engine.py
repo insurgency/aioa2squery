@@ -21,7 +21,10 @@ class ServerType(TryLowercaseValueWhenMissingMixin, OrdinalByteRepresentationMix
     DEDICATED_SERVER = ord('d')
     """:valve-wiki:`Dedicated game server <Source_Dedicated_Server>`"""
     LISTEN = ord('l')
-    """Non-dedicated server (:valve-wiki:`LAN <Preventing_Players_from_Joining_a_Map>`/``sv_lan "0"``)"""
+    """
+    Non-dedicated local :steam-support:`listen server <5452-TASB-6078>`
+    (:valve-wiki:`LAN <Preventing_Players_from_Joining_a_Map>`/``sv_lan "0"``)
+    """
     NON_DEDICATED_SERVER = LISTEN
     """An alias for :attr:`LISTEN`"""
     SOURCETV_RELAY_PROXY = ord('p')
