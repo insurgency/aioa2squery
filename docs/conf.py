@@ -27,7 +27,8 @@ extlinks = {
     'issue': ('https://github.com/insurgency/aioa2squery/issues/%s', 'gh-'),
     'valve-wiki': ('https://developer.valvesoftware.com/wiki/%s', 'page'),
     'wikipedia': ('https://wikipedia.org/wiki/%s', 'page'),
-    'steam-app': ('https://store.steampowered.com/app/%s', 'app-id')
+    'steam-app': ('https://store.steampowered.com/app/%s', 'app-id'),
+    'steam-support': ('https://support.steampowered.com/kb_article.php?ref=%s', 'ref'),
 }
 # https://github.com/NextThought/sphinxcontrib-programoutput/issues/37#issuecomment-504008704
 programoutput_prompt_template = "$ a2squery query --help\n{output}"
