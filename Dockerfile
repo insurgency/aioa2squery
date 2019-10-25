@@ -1,4 +1,5 @@
-FROM python:${PYTHON_VERSION:-3.8}-slim
+ARG PYTHON_VERSION=3.8
+FROM python:${PYTHON_VERSION}-slim
 
 LABEL maintainer="insurgency.gg"
 
