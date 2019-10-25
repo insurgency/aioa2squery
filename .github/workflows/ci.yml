@@ -110,7 +110,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - windows-latest
+          #- windows-latest
           - ubuntu-latest
           - macOS-latest
     steps:
