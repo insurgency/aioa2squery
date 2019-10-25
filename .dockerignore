@@ -1,26 +1,8 @@
-# Sphinx Documentation
-docs/
-*.rst
-
-# Unit Tests
-tests/
-
-# Pipenv
-Pipfile*
-
-# Markdown
-*.md
-*.markdown
-
-# Dotfiles & hidden subdirectories
-.*
-.*/
-
-# Manifest Files
-*.in
-
-# Docker Compose
-docker-compose.y?ml
-
-# Other
-Dangerfile
+# Blacklist all
+*
+# Whitelist project files needed for installation
+!aioa2squery/
+!setup.*
+# Unignore Dockerfile for docker-java
+# See: https://github.com/docker-java/docker-java/issues/286#issuecomment-445983101
+!Dockerfile
