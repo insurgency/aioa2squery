@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d85bf6c94ec639fd65b0cf0b29176645d0c17a2b1eb4d1986c27b6fb70958240"
+            "sha256": "49adbdd7d1657ae75f1363bcd639e96dd6d611d3ebc71cbb5da2f45e7d32d21a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -205,6 +205,14 @@
                 "sha256:f3832918bc3c66617f92e35f5d70729187676313caa60c187eb0f28b8fe5e3b5"
             ],
             "version": "==1.1.0"
+        },
+        "importlib-metadata": {
+            "hashes": [
+                "sha256:aa18d7378b00b40847790e7c27e11673d7fed219354109d0e7b9e5b25dc3ad26",
+                "sha256:d5f18a79777f3aa179c145737780282e27b508fc8fd688cb17c7a813e8bd39af"
+            ],
+            "markers": "python_version < '3.8'",
+            "version": "==0.23"
         },
         "isort": {
             "hashes": [
@@ -654,6 +662,7 @@
                 "sha256:fdc1c9bbf79510b76408840e009ed65958feba92a88833cdceecff93ae8fff66",
                 "sha256:ffde2fbfad571af120fcbfbbc61c72469e72f550d676c3342492a9dfdefb8f12"
             ],
+            "markers": "implementation_name == 'cpython' and python_version < '3.8'",
             "version": "==1.4.0"
         },
         "typing-extensions": {
@@ -670,6 +679,21 @@
                 "sha256:9a107b99a5393caf59c7aa3c1249c16e6879447533d0887f4336dde834c7be86"
             ],
             "version": "==1.25.6"
+        },
+        "uvloop": {
+            "hashes": [
+                "sha256:182617c2992a79b268bfd193691c4aacb93634e9d8d96edf560a842a6206411d",
+                "sha256:2a0268553d2920108b05250c9711060313851daa60b1052c38b6520320aa50b1",
+                "sha256:32d2fe6ee6be28a99661e1f02bf6cedb99711df1065a3fb7ba7dd73ccb85f768",
+                "sha256:448b13a1adfc47745b880b5d5b34c975c7851b1cd3b0eafe2569b2250190c797",
+                "sha256:469e0e3b80f245ed32f054174e6a69e6a01715dbbb24eb917733fe5af09ad306",
+                "sha256:682fa2ab24a758831f531dca122f128373c3dd95a3c8885b5fd1c48775d0024f",
+                "sha256:9967fd537f3164607d153900aaae036e9a18015d8478f84406ba58b183f5abfc",
+                "sha256:9ab030794432c47b78199d3f268ac2c898ae85fb9f09e10ae03dd7af62904b0e",
+                "sha256:c1d55b6926d956a29cf5d7cc891004602ea7cd006b0b80354b9b3d973ca9027f"
+            ],
+            "index": "pypi",
+            "version": "==0.14.0rc1"
         },
         "virtualenv": {
             "hashes": [
@@ -704,6 +728,13 @@
                 "sha256:565a021fd19419476b9362b05eeaa094178de64f8361e44468f9e9d7843901e1"
             ],
             "version": "==1.11.2"
+        },
+        "zipp": {
+            "hashes": [
+                "sha256:3718b1cbcd963c7d4c5511a8240812904164b7f381b647143a89d3b98f9bcd8e",
+                "sha256:f06903e9f1f43b12d371004b4ac7b06ab39a44adc747266928ae6debfa7b3335"
+            ],
+            "version": "==0.6.0"
         }
     }
 }
