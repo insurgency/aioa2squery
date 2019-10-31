@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup(
     name='aioa2squery',
     version='0.0.1',
-    author='hink',
+    author='insurgency.gg',
     url='https://github.com/insurgency/aioa2squery',
     packages=find_packages(
         exclude=[
