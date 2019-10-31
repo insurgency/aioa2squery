@@ -35,7 +35,7 @@ setup(
         'Typing :: Typed',
     ],
     license='MIT',
-    python_requires='>=3.7',
+    python_requires='>=3.8',
     test_suite='tests',
     extras_require={
         'speedups': [
