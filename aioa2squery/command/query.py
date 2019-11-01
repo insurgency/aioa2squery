@@ -177,7 +177,7 @@ async def query(loop: AbstractEventLoop):
     for host, port in hosts(chain.from_iterable(cmd_args.networks), cmd_args.ports):
         await sem.acquire()
 
-        task = asyncio.create_task(query_host(query_client, host=str(host), port=port))
+        task = asyncio.create_task(query_host(query_client, host=str(host), port=port), name=f'query {host}:{port}')
         tasks.add(task)
         task.add_done_callback(functools.partial(print_query_result, str(host), port))
 
