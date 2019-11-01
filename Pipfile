@@ -28,7 +28,7 @@ pytest-cov = "*"
 # Extras
 argcomplete = "*"
 # Packaging
-pyinstaller = "*"
+pyinstaller = {git = "https://github.com/pyinstaller/pyinstaller.git",ref = "develop"}
 wheel = "*"
 # PyInstaller platform-specific dependencies
 pywin32-ctypes = ">=0.2.0"

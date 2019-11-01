@@ -126,7 +126,7 @@ jobs:
           pipenv install --system --deploy --ignore-pipfile --dev
           # Reinstall PyInstaller manually, otherwise it will fail
           # See: https://github.com/pyinstaller/pyinstaller/pull/4455#issuecomment-537254602
-          pip3 install PyInstaller
+          pip3 install git+https://github.com/pyinstaller/pyinstaller.git@develop#egg=PyInstaller
       - name: Create frozen command binary using PyInstaller
         # language=BASH
         run: pyinstaller --onefile --name a2squery ./aioa2squery/__main__.py
