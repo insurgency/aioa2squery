@@ -89,6 +89,7 @@ def print_query_result(host, port, ping_task: Task):
                     Game: {response.game} ({response.version})
                     App ID: {response.game_id or response.app_id}
                     Visibility: {response.server_visibility}
+                    Map: {response.map}
                     Players: {response.players - response.bots}/{response.max_players} ({response.bots} bots)
                     VAC: {'yes' if response.vac else 'no'}
                     Environment: {response.server_environment!s}
