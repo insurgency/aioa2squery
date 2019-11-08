@@ -133,7 +133,7 @@ jobs:
       - name: Upload frozen ${{ matrix.os }} binary
         uses: actions/upload-artifact@master
         with:
-          name: Frozen ${{ matrix.os }} binary
+          name: a2squery_${{ matrix.os }}.zip
           path: ./dist/
   docker:
     name: Build Docker image
