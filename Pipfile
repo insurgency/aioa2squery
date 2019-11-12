@@ -11,6 +11,7 @@ sphinx = "*"
 sphinx-autobuild = "*"
 sphinxcontrib-programoutput = "*"
 sphinxcontrib-spelling = "*" # https://sphinxcontrib-spelling.readthedocs.io/en/stable/install.html#installing-sphinxcontrib-spelling
+sphinxcontrib-versioning = "*" # https://sphinxcontrib-versioning.readthedocs.io/en/latest/install.html#pip-install
 # Linters & Static Analysis
 pylint = "*"
 pydocstyle = "*"
