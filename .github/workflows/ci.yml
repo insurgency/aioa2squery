@@ -130,6 +130,8 @@ jobs:
       - name: Create frozen command binary using PyInstaller
         # language=BASH
         run: pyinstaller --onefile --name a2squery ./aioa2squery/__main__.py
+      - name: Ensure frozen binary works
+        run: ./dist/a2squery -h
       - name: Upload frozen ${{ matrix.os }} binary
         uses: actions/upload-artifact@master
         with:
