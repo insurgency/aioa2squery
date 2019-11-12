@@ -95,11 +95,12 @@ jobs:
           name: JSON documentation
           path: ./docs/_build/json/
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/latest' || github.ref == 'refs/heads/stable'
         uses: JamesIves/github-pages-deploy-action@master
         env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: latest
+          BASE_BRANCH: ${GITHUB_REF#refs/heads/}
           BRANCH: gh-pages
           FOLDER: docs/_build/html/
   freeze:
