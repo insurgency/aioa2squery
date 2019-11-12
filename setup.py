@@ -39,7 +39,7 @@ setup(
     test_suite='tests',
     extras_require={
         'speedups': [
-            'uvloop==0.14.0rc2',
+            'uvloop',
         ],
     },
     # Automatic Script Creation
