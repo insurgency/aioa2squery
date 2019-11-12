@@ -164,4 +164,5 @@ jobs:
           ./
       - name: Publish Docker image to GitHub Package Registry
         # language=BASH
+        if: github.ref == 'refs/heads/latest' || github.ref == 'refs/heads/stable'
         run: docker push "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery"
