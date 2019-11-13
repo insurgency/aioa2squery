@@ -160,7 +160,7 @@ jobs:
           docker build
           --pull
           --build-arg PYTHON_VERSION=$(jq -j '._meta.requires.python_version' ./Pipfile.lock)
-          --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:${GITHUB_REF#refs/heads/}"
+          --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:$(GITHUB_REF=${GITHUB_REF#refs/heads/}; echo -n ${GITHUB_REF////-})"
           --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:$(date +%s)"
           --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:$GITHUB_SHA"
           --tag "docker.pkg.github.com/$GITHUB_REPOSITORY/a2squery:${GITHUB_SHA:0:7}"
