@@ -145,14 +145,8 @@ jobs:
     # https://github.com/insurgency/aioa2squery/packages?package_type=Docker
     steps:
       - name: Log in to the GitHub Docker Registry
-        env:
-          # See: https://help.github.com/en/articles/virtual-environments-for-github-actions#github_token-secret
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # See: https://github.blog/changelog/2019-08-16-publishing-packages-from-a-github-action-to-github-package-registry
-          # See: https://github.community/t5/GitHub-Actions/Github-Actions-Docker-login/m-p/31262#M740
-          GITHUB_TOKEN: ${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN }}
         # language=BASH
-        run: echo $GITHUB_TOKEN | docker login --username ${GITHUB_REPOSITORY%/*} --password-stdin docker.pkg.github.com
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login --username ${GITHUB_REPOSITORY%/*} --password-stdin docker.pkg.github.com
       - uses: actions/checkout@v1
       - name: Build Docker image
         # language=BASH
