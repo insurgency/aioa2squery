@@ -33,11 +33,11 @@
         },
         "argcomplete": {
             "hashes": [
-                "sha256:2f2052ea5156eb5cc7edce9c0ddc937e30c49c1097d51b24f34350a08632a264",
-                "sha256:45836de8cc63d2f6e06b898cef1e4ce1e9907d246ec77ac8e64f23f153d6bec1"
+                "sha256:c6aaa1d534adaa1be0a7e9d51d7f5993dba608f6d2a2b765302c05b0b3e9a719",
+                "sha256:ec88b5ccefe2d47d8f14916a006431d0afb756751ee5c46f28654a7d8a69be53"
             ],
             "index": "pypi",
-            "version": "==1.10.0"
+            "version": "==1.10.2"
         },
         "argh": {
             "hashes": [
@@ -435,7 +435,7 @@
         },
         "pyinstaller": {
             "git": "https://github.com/pyinstaller/pyinstaller.git",
-            "ref": "8ae9f94d54594f271b52ac27466b94bc2e36074b"
+            "ref": "1eadfa55f2ad21539d7773dfb23f27ebd9db26d8"
         },
         "pylint": {
             "hashes": [
