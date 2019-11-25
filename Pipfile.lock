@@ -356,10 +356,11 @@
         },
         "pbr": {
             "hashes": [
-                "sha256:2c8e420cd4ed4cec4e7999ee47409e876af575d4c35a45840d59e8b5f3155ab8",
-                "sha256:b32c8ccaac7b1a20c0ce00ce317642e6cf231cf038f9875e0280e28af5bf7ac9"
+                "sha256:139d2625547dbfa5fb0b81daebb39601c478c21956dc57e2e07b74450a8c506b",
+                "sha256:61aa52a0f18b71c5cc58232d2cf8f8d09cd67fcad60b742a60124cb8d6951488"
             ],
-            "version": "==5.4.3"
+            "index": "pypi",
+            "version": "==5.4.4"
         },
         "pefile": {
             "hashes": [
@@ -428,7 +429,7 @@
         },
         "pyinstaller": {
             "git": "https://github.com/pyinstaller/pyinstaller.git",
-            "ref": "1eadfa55f2ad21539d7773dfb23f27ebd9db26d8"
+            "ref": "8accaf1036ce25a87f6267f2f8d8b2e0926794c2"
         },
         "pylint": {
             "hashes": [
@@ -704,7 +705,6 @@
                 "sha256:116655188441670978117d0ebb6451eb6a7526f9ae0796cc0dee6bd7356909b0",
                 "sha256:b57776b44f91511866594e477dd10e76a6eb44439cdd7f06dcd30ba4c5bd854f"
             ],
-            "index": "pypi",
             "version": "==16.7.8"
         },
         "watchdog": {
