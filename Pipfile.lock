@@ -33,11 +33,11 @@
         },
         "argcomplete": {
             "hashes": [
-                "sha256:c6aaa1d534adaa1be0a7e9d51d7f5993dba608f6d2a2b765302c05b0b3e9a719",
-                "sha256:ec88b5ccefe2d47d8f14916a006431d0afb756751ee5c46f28654a7d8a69be53"
+                "sha256:a37f522cf3b6a34abddfedb61c4546f60023b3799b22d1cd971eacdc0861530a",
+                "sha256:d8ea63ebaec7f59e56e7b2a386b1d1c7f1a7ae87902c9ee17d377eaa557f06fa"
             ],
             "index": "pypi",
-            "version": "==1.10.2"
+            "version": "==1.10.3"
         },
         "argh": {
             "hashes": [
@@ -424,7 +424,6 @@
                 "sha256:83ec6c6133ca6b529b7ff5aa826328fd14b5bb02a58c37f4f06384e96a0f94ab",
                 "sha256:b7949de3d396836085fea596998b135a22610bbcc4f2abfe9e448e44cbc58388"
             ],
-            "index": "pypi",
             "version": "==2.5.1"
         },
         "pyinstaller": {
