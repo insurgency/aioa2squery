@@ -33,11 +33,11 @@
         },
         "argcomplete": {
             "hashes": [
-                "sha256:a37f522cf3b6a34abddfedb61c4546f60023b3799b22d1cd971eacdc0861530a",
-                "sha256:d8ea63ebaec7f59e56e7b2a386b1d1c7f1a7ae87902c9ee17d377eaa557f06fa"
+                "sha256:52a08b426bd0b03b6881182dd84149b2493540d1c3109ccf9f09f78e4459e387",
+                "sha256:783d6a12c6c84a33653dc5bac4d6c0640ba64d1037c2662acd9dbe410c26056f"
             ],
             "index": "pypi",
-            "version": "==1.10.3"
+            "version": "==1.11.0"
         },
         "argh": {
             "hashes": [
