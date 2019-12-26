@@ -260,11 +260,11 @@
         },
         "macholib": {
             "hashes": [
-                "sha256:ac02d29898cf66f27510d8f39e9112ae00590adb4a48ec57b25028d6962b1ae1",
-                "sha256:c4180ffc6f909bf8db6cd81cff4b6f601d575568f4d5dee148c830e9851eb9db"
+                "sha256:b71afea242d5ad4caacbdb79d80e75815d033fbc30f45954b2f3397f39683fd6",
+                "sha256:c72bda118afe7799570fcb4114315d5c9c5416e48eacf1198da39b4d77201559"
             ],
             "index": "pypi",
-            "version": "==1.11"
+            "version": "==1.13"
         },
         "markupsafe": {
             "hashes": [
@@ -442,7 +442,6 @@
                 "sha256:4c830582a84fb022400b85429791bc551f1f4871c33f23e44f353119e92f969f",
                 "sha256:c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"
             ],
-            "index": "pypi",
             "version": "==2.4.6"
         },
         "pytest": {
