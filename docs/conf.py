@@ -11,7 +11,6 @@ author = 'insurgency.gg'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
-    'sphinx.ext.coverage',
     'sphinx.ext.doctest',
     'sphinx.ext.extlinks',
     # See: https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
