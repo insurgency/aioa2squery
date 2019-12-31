@@ -43,7 +43,7 @@ html_static_path = ['_static']
 nitpicky = True
 source_suffix = {
     '.rst': 'restructuredtext',
-    '.md': 'markdown'
+    '.md': 'markdown',
 }
 
 # Spelling: https://sphinxcontrib-spelling.readthedocs.io/en/stable/install.html#configuration
