@@ -87,7 +87,6 @@ class ArgumentParser(argparse.ArgumentParser):
         self.exit(2, _('Error: %(message)s\n') % args)
 
 
-# noinspection PyProtectedMember
 class HelpFormatter(argparse.RawDescriptionHelpFormatter):
     def add_usage(self, usage, actions, groups, prefix=None):
         if prefix is None:
@@ -95,6 +94,7 @@ class HelpFormatter(argparse.RawDescriptionHelpFormatter):
 
         super().add_usage(usage, actions, groups, prefix)
 
+    # noinspection PyProtectedMember
     def _format_action(self, action: argparse.Action):
         parts = super()._format_action(action)
 
