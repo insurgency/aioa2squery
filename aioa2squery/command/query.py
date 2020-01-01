@@ -150,7 +150,7 @@ def hosts(networks, ports: Set[int]) -> Generator[Tuple[IPv4Address, int], None,
 
     for network in networks:
         for port in ports:
-            yield (network, port)
+            yield network, port
 
 
 async def query(loop: AbstractEventLoop):
