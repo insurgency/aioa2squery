@@ -61,7 +61,7 @@ def ip_network(address: str):
             # Otherwise apply normal CIDR notation parsing
             return [ipaddress.IPv4Network(address)]
     except (ipaddress.AddressValueError, ipaddress.NetmaskValueError, TypeError, ValueError):
-        raise argparse.ArgumentTypeError(f"invalid IPv4 network value {address}")
+        raise argparse.ArgumentTypeError(f"invalid IPv4 network value '{address}'")
 
 
 class ArgumentParser(argparse.ArgumentParser):
@@ -81,8 +81,10 @@ class ArgumentParser(argparse.ArgumentParser):
         arg_line = re.sub(pattern=r'#.*\n?', repl='', string=arg_line)
         # Strip leading & trailing whitespace from each line
         arg_line = arg_line.strip()
+        # Split line at whitespace seperations
+        arg_line = arg_line.split()
 
-        return arg_line.split()
+        return arg_line
 
     def error(self, message: Text):
         self.print_usage(sys.stderr)
