@@ -68,6 +68,9 @@ class ArgumentParser(argparse.ArgumentParser):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        # Capitalize the default help action help text
+        self._actions[0].help = self._actions[0].help.capitalize()
+
         # Titleize positional and optional argument group titles
         self._positionals.title = self._positionals.title.title()
         self._optionals.title = self._optionals.title.title()
@@ -119,7 +122,11 @@ parser = ArgumentParser(prog='a2squery', fromfile_prefix_chars='@', formatter_cl
                         description="Command-line utility for the A2S game server query protocol")
 
 # Main parser arguments
-parser.add_argument('-v', '--version', action='version', version='%(prog)s')  # FIXME
+# FIXME
+# noinspection PyProtectedMember
+parser.add_argument('-v', '--version', action='version', version='%(prog)s',
+                    # Capitalize default version argument help text
+                    help=argparse._VersionAction.__init__.__defaults__[-1].capitalize())
 # noinspection PyProtectedMember
 parser.add_argument('-l', '--log-level', type=str.upper, help=argparse.SUPPRESS, choices=logging._nameToLevel.keys())
 
