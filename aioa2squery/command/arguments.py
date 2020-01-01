@@ -152,7 +152,9 @@ query_type_group.add_argument('--ping', action='store_true', help="Query server 
 query_subparser.add_argument('-p', '--ports', help="Destination ports", metavar='PORTS', type=port_range_expression,
                              default={int(QueryPort.SRCDS)})
 query_subparser.add_argument('-t', '--timeout', default=3, type=float, help="Query timeout duration", metavar='SECONDS')
-query_subparser.add_argument('networks', action=ChainAndCollapseIPNetworksAction, nargs='+', metavar='CIDR',
+query_subparser.add_argument('-i', '--input-file', type=argparse.FileType('r'),
+                             help="Query networks from an external FILE", metavar='FILE')
+query_subparser.add_argument('networks', action=ChainAndCollapseIPNetworksAction, nargs='*', metavar='CIDR',
                              help="Network to query", type=ip_network)
 # Some additional super "secret" developer query options
 query_subparser.add_argument('--csv', action='store_true', default=False, help=argparse.SUPPRESS)
@@ -177,6 +179,27 @@ proxy_subparser = subparsers.add_parser('proxy', description=_help, help=_help, 
 
 # Finally parse arguments
 cmd_args = parser.parse_args()
+
+if cmd_args.command == 'query':
+    # Require at least one target host to be passed as a positional command argument or from a parsed file
+    if not (cmd_args.networks or cmd_args.input_file):
+        parser.error("At least one network or host to query must be provided")
+
+    # Parse networks from a file if the file argument was passed
+    if cmd_args.input_file:
+        for line_number, line_text in enumerate(cmd_args.input_file.read().splitlines(), 1):
+            networks_from_line = parser.convert_arg_line_to_args(line_text)
+
+            for network in networks_from_line:
+                try:
+                    network = ip_network(network)
+                except argparse.ArgumentTypeError:
+                    parser.error(f"invalid network '{network}' in '{cmd_args.input_file.name}' (line {line_number})")
+                else:
+                    cmd_args.networks.extend(network)
+
+        # Collapse overlapping networks again after file containing networks is parsed
+        cmd_args.networks = list(ipaddress.collapse_addresses(cmd_args.networks))
 
 # Set logging level with a basic config to the configured level
 logging.basicConfig(format='%(levelname)s (%(name)s): %(message)s', level=cmd_args.log_level or logging.INFO)
