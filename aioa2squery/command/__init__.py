@@ -26,7 +26,7 @@ def main():
 
     try:
         if cmd_args.command == 'query':
-            loop.run_until_complete(query(loop))
+            query(loop)
     except KeyboardInterrupt:
         pass
     finally:

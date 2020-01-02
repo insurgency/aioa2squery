@@ -153,22 +153,7 @@ def hosts(networks, ports: Set[int]) -> Generator[Tuple[IPv4Address, int], None,
             yield network, port
 
 
-async def query(loop: AbstractEventLoop):
-    # Count up the total amount of hosts and target ports being queried
-    total_hosts = sum(n.num_addresses for n in cmd_args.networks) * len(cmd_args.ports)
-    # Additionally report what the approximate query rate will be given the concurrency and timeout
-    query_rate = round(cmd_args.concurrency / cmd_args.timeout)
-    # Calculate an **extremely** rough estimate of how long all queries should take to complete
-    estimated_time = timedelta(seconds=round(total_hosts / (cmd_args.concurrency / cmd_args.timeout)))
-
-    logging.info(f"Querying {total_hosts:,d} hosts in ~{estimated_time} @ ~{query_rate:,d} queries/sec")
-
-    if cmd_args.info and cmd_args.csv:
-        # Print out the CSV header if applicable
-        csv_writer.writeheader()
-
-    before = loop.time()
-
+async def _query():
     global sem
     sem = asyncio.BoundedSemaphore(cmd_args.concurrency)
 
@@ -184,15 +169,37 @@ async def query(loop: AbstractEventLoop):
 
     await asyncio.gather(*tasks, return_exceptions=True)
 
-    # Calculate some final statistics to report:
-    now = loop.time()
-    elapsed_time = timedelta(seconds=round(now - before))
-    percentage = successes / total_hosts * 100 if total_hosts > 0 else 0
 
-    logging.info(f"Completed {successes:,d}/{total_hosts:,d} ({percentage:.1f}%) queries in {elapsed_time}")
+def query(loop: AbstractEventLoop):
+    # Count up the total amount of hosts and target ports being queried
+    total_hosts = sum(n.num_addresses for n in cmd_args.networks) * len(cmd_args.ports)
+    # Additionally report what the approximate query rate will be given the concurrency and timeout
+    query_rate = round(cmd_args.concurrency / cmd_args.timeout)
+    # Calculate an **extremely** rough estimate of how long all queries should take to complete
+    estimated_time = timedelta(seconds=round(total_hosts / (cmd_args.concurrency / cmd_args.timeout)))
 
-    if successes > 0:
-        if cmd_args.info or cmd_args.players:
-            logging.info(f"Found a total of {total_players:,d} players online")
-        elif cmd_args.ping and successes >= 1:
-            logging.info(f"Average server ping of {round(total_ping / successes)}ms")
+    logging.info(f"Querying {total_hosts:,d} hosts in ~{estimated_time} @ ~{query_rate:,d} queries/sec")
+
+    if cmd_args.info and cmd_args.csv:
+        # Print out the CSV header if applicable
+        csv_writer.writeheader()
+
+    before = loop.time()
+
+    try:
+        loop.run_until_complete(_query())
+    except KeyboardInterrupt:
+        raise
+    finally:
+        # Calculate some final statistics to report:
+        now = loop.time()
+        elapsed_time = timedelta(seconds=round(now - before))
+        percentage = successes / total_hosts * 100 if total_hosts > 0 else 0
+
+        logging.info(f"Completed {successes:,d}/{total_hosts:,d} ({percentage:.1f}%) queries in {elapsed_time}")
+
+        if successes > 0:
+            if cmd_args.info or cmd_args.players:
+                logging.info(f"Found a total of {total_players:,d} players online")
+            elif cmd_args.ping and successes >= 1:
+                logging.info(f"Average server ping of {round(total_ping / successes)}ms")
