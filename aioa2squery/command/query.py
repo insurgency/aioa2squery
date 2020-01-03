@@ -2,6 +2,7 @@ import asyncio
 import csv
 import functools
 import logging
+import struct
 
 from typing import Generator, Tuple, Set
 
@@ -133,7 +134,7 @@ def print_query_result(host, port, ping_task: Task):
             print(f"{host}:{port}: {response}ms")
     except asyncio.TimeoutError:
         logging.debug(f"{host}:{port}: query timed out")
-    except ResponseError as err:
+    except (ResponseError, struct.error) as err:
         logging.debug(f"{host}:{port}: {err}")
     else:
         global successes
