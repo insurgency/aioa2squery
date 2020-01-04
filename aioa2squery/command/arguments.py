@@ -185,6 +185,9 @@ if cmd_args.command == 'query':
     if not (cmd_args.networks or cmd_args.input_file):
         parser.error("At least one network or host to query must be provided")
 
+    if cmd_args.csv and not cmd_args.info:
+        parser.error("--csv option can only be applied to --info queries")
+
     # Parse networks from a file if the file argument was passed
     if cmd_args.input_file:
         for line_number, line_text in enumerate(cmd_args.input_file.read().splitlines(), 1):
