@@ -16,7 +16,7 @@ class ServerType(TryLowercaseValueWhenMissingMixin, OrdinalByteRepresentationMix
     Indicates the type of server
     """
 
-    UNKNOWN = auto()
+    UNKNOWN = 0
     """No particular server type"""
     DEDICATED_SERVER = ord('d')
     """:valve-wiki:`Dedicated game server <Source_Dedicated_Server>`"""
