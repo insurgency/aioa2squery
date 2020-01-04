@@ -30,7 +30,7 @@ __all__ = (
     'query',
 )
 
-successes = errors = players = total_ping = total_players = total_servers = 0
+successes = errors = total_ping = total_players = total_servers = 0
 # Concurrency limit semaphore
 sem = None
 tasks = set()
@@ -57,13 +57,14 @@ async def query_host(query_client, host, port):
 
 
 def print_query_result(host, port, ping_task: Task):
+    global total_players
+
     try:
         response, ping = ping_task.result()
 
         if cmd_args.info:
             response: A2SInfoResponse
 
-            global total_players
             total_players += response.players
 
             if hasattr(response, 'keywords') and response.keywords:
@@ -102,8 +103,7 @@ def print_query_result(host, port, ping_task: Task):
             # noinspection PyTypeChecker
             response: A2SPlayersResponse = response
 
-            global players
-            players += len(response)
+            total_players += len(response)
 
             print(f"Host: {host}:{port} ({len(response)} players)\n")
 
