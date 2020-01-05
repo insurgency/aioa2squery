@@ -20,6 +20,7 @@ Steam Application IDs
 
 .. autoclass:: aioa2squery.AppID
     :members:
+    :undoc-members:
 
 Game Engine Versions
 --------------------
