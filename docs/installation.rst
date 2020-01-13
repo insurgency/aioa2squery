@@ -56,4 +56,4 @@ Verifying Package Signatures
 We make a best effort to use cryptographic signing wherever possible. All of
 our publicly distributed Python library packages are signed using `our
 organization's PGP public key
-<https://gist.github.com/h1nk/a05e040aae61baad1d4836b42d46b772>`_).
+<https://gist.github.com/h1nk/a05e040aae61baad1d4836b42d46b772>`_.
