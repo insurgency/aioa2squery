@@ -37,6 +37,7 @@ pefile = ">=2017.8.1"
 macholib = "*"
 # asyncio
 uvloop = "*"
+documentation = {editable = true,git = "https://github.com/insurgency/docs.git"}
 
 [packages]
 
