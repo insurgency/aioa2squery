@@ -1,11 +1,11 @@
 Responses
 =========
 
-Query responses are defined as :mod:`dataclasses` which allows them to be
-defined in a :wikipedia:`DRY <Don't_repeat_yourself>` and declarative way.
-This also means any response object can also be easily converted to a
-dictionary and serialized which can be helpful for saving response data in
-other storage systems like a database, cache, or data structure store:
+Query responses are defined as :mod:`dataclasses`, which allows them to be
+defined in a :wikipedia:`DRY <Don't_repeat_yourself>` and declarative way. This
+also means any response object can be converted to a dictionary and serialized
+which is useful for saving response data in storage systems like databases,
+caches, or a data structure store like redis.
 
 .. doctest::
 
@@ -14,10 +14,6 @@ other storage systems like a database, cache, or data structure store:
     >>> from pickle import dumps, loads
     >>> A2SInfoResponse()
     >>> ...
-    >>> # We personally utilize this to store response data into
-    >>> # a database for building time series metrics as well as
-    >>> # redis with a set TTL for making server data accessible
-    >>> # in a web application context.
     >>> dumps(asdict(_))
     >>> ...
     >>> loads(_)
