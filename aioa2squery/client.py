@@ -13,6 +13,8 @@ __all__ = (
     'A2SQueryContext',
 )
 
+QUERY_HOST = '127.0.0.1'
+
 
 class A2SQueryContext:
     """
@@ -75,7 +77,7 @@ class A2SQueryContext:
             # Assure client transport is closed regardless of errors while querying
             transport.close()
 
-    async def query_info(self, host: Optional[str] = '127.0.0.1', port: Optional[int] = QueryPort.SRCDS,
+    async def query_info(self, host: Optional[str] = QUERY_HOST, port: Optional[int] = QueryPort.SRCDS,
                          timeout: Optional[float] = None) -> Tuple[A2SInfoResponse, int]:
         """
         Retrieve information about the server including, but not limited to: its name, the map currently being
@@ -105,7 +107,7 @@ class A2SQueryContext:
 
         return await self.execute_query(host, port, timeout, func='a2s_query_info')
 
-    async def query_players(self, host: Optional[str] = '127.0.0.1', port: Optional[int] = QueryPort.SRCDS,
+    async def query_players(self, host: Optional[str] = QUERY_HOST, port: Optional[int] = QueryPort.SRCDS,
                             timeout: Optional[float] = None) -> Tuple[A2SPlayersResponse, int]:
         """
         Retrieve information about the players currently on the server.
@@ -145,7 +147,7 @@ class A2SQueryContext:
 
         return await self.execute_query(host, port, timeout, func='a2s_query_players')
 
-    async def query_rules(self, host: Optional[str] = '127.0.0.1', port: Optional[int] = QueryPort.SRCDS,
+    async def query_rules(self, host: Optional[str] = QUERY_HOST, port: Optional[int] = QueryPort.SRCDS,
                           timeout: Optional[float] = None) -> Tuple[A2SRulesResponse, int]:
         """
         .. warning::
@@ -168,7 +170,7 @@ class A2SQueryContext:
 
     @deprecated(message="A2A_PING is no longer supported on Counter Strike: Source and Team Fortress 2 servers, "
                         "and is considered a deprecated feature.")
-    async def query_ping(self, host: Optional[str] = '127.0.0.1', port: Optional[int] = QueryPort.SRCDS,
+    async def query_ping(self, host: Optional[str] = QUERY_HOST, port: Optional[int] = QueryPort.SRCDS,
                          timeout: Optional[float] = None) -> int:
         """
         Ping the server to see if it exists, this can be used to calculate the latency to the server.
@@ -199,7 +201,7 @@ class A2SQueryContext:
 
         return await self.execute_query(host, port, timeout, func='a2a_query_ping')
 
-    async def _query_get_challenge(self, host: Optional[str] = '127.0.0.1', port: Optional[int] = QueryPort.SRCDS,
+    async def _query_get_challenge(self, host: Optional[str] = QUERY_HOST, port: Optional[int] = QueryPort.SRCDS,
                                    timeout: Optional[float] = None):
         """
         ``A2S_PLAYER`` and ``A2S_RULES`` queries both require a challenge number. Formerly, this number could be
