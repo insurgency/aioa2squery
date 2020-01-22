@@ -129,9 +129,9 @@ def print_query_result(host, port, ping_task: Task):
                 print(f'{name} "{value}"')
         elif cmd_args.ping:
             global total_ping
-            total_ping += response
+            total_ping += ping
 
-            print(f"{host}:{port}: {response}ms")
+            print(f"{host}:{port}: {ping}ms")
     except asyncio.TimeoutError:
         logging.debug(f"{host}:{port}: query timed out")
     except (ResponseError, struct.error) as err:

@@ -5,7 +5,7 @@ from typing import Optional, Tuple
 
 from .decorators import deprecated
 from .protocol import A2SQueryProtocol
-from .responses import A2SInfoResponse, A2SPlayersResponse, A2SRulesResponse
+from .responses import A2SInfoResponse, A2SPlayersResponse, A2SRulesResponse, A2SPingResponse
 from .context import *
 from .enumerations import *
 
@@ -171,7 +171,7 @@ class A2SQueryContext:
     @deprecated(message="A2A_PING is no longer supported on Counter Strike: Source and Team Fortress 2 servers, "
                         "and is considered a deprecated feature.")
     async def query_ping(self, host: Optional[str] = QUERY_HOST, port: Optional[int] = QueryPort.SRCDS,
-                         timeout: Optional[float] = None) -> int:
+                         timeout: Optional[float] = None) -> Tuple[A2SPingResponse, int]:
         """
         Ping the server to see if it exists, this can be used to calculate the latency to the server.
 

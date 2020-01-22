@@ -634,13 +634,13 @@ class A2SRulesResponse(A2SQueryResponse):
 
 @response(header=ord('j'))  # 0x6A
 class A2SPingResponse(A2SQueryResponse):
-    payload: String
+    _payload: String
 
     def __init__(self):
         if GAME_ENGINE.get() is Engine.SOURCE:
-            self.payload = ''
+            self._payload = ''
         elif GAME_ENGINE.get() is Engine.GOLDSRC:
-            self.payload = '00000000000000.'
+            self._payload = '0' * 14 + '.'
 
         super().__init__()
 
