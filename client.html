@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Query Client &#8212; aioa2squery  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Responses" href="responses.html" />
+    <link rel="prev" title="Examples" href="examples.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="query-client">
+<span id="id1"></span><h1>Query Client<a class="headerlink" href="#query-client" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="aioa2squery.A2SQueryContext">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">A2SQueryContext</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">game_engine: aioa2squery.enumerations.engine_versions.Engine = &lt;Engine.SOURCE: 2&gt;</em>, <em class="sig-param">app_id: Optional[int] = None</em>, <em class="sig-param">packet_split_size: Optional[int] = 1248</em>, <em class="sig-param">timeout: Optional[float] = 10.0</em>, <em class="sig-param">use_compression: bool = False</em><span class="sig-paren">)</span><a class="headerlink" href="#aioa2squery.A2SQueryContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query client that handles the nuances of querying different Source engine and game versions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Default timeout duration (in seconds) when making <a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_Queries">server queries</a></p></li>
+<li><p><strong>game_engine</strong> (<a class="reference internal" href="enumerations.html#aioa2squery.Engine" title="aioa2squery.Engine"><em>aioa2squery.Engine</em></a>) – Explicitly treat all query responses as being in the response format for a specific game engine
+version</p></li>
+<li><p><strong>app_id</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – If specified treat all responses as being in a format for this explicit
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Steam_Application_IDs">Steam application ID</a></p></li>
+<li><p><strong>packet_split_size</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – How big to make query before splitting query request into additional packets. Steam uses
+a packet size of 1400 bytes (the default).</p></li>
+<li><p><strong>use_compression</strong> (<a class="reference external" href="https://docs.python.org/3.8/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether or not to apply compression on multi-packeted query requests</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/exceptions.html#RuntimeError" title="(in Python v3.8)"><strong>RuntimeError</strong></a> – If query client is initialized outside of an event loop/coroutine function</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="aioa2squery.A2SQueryContext.query_info">
+<em class="property">async </em><code class="sig-name descname">query_info</code><span class="sig-paren">(</span><em class="sig-param">host: Optional[str] = '127.0.0.1'</em>, <em class="sig-param">port: Optional[int] = &lt;QueryPort.SRCDS: 27015&gt;</em>, <em class="sig-param">timeout: Optional[float] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[aioa2squery.responses.A2SInfoResponse, int]<a class="headerlink" href="#aioa2squery.A2SQueryContext.query_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve information about the server including, but not limited to: its name, the map currently being
+played, and the number of players</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://developer.valvesoftware.com/wiki/Rag_Doll_Kung_Fu">Rag Doll Kung Fu</a> <a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_Dedicated_Server">servers</a> always
+return <a class="reference internal" href="enumerations.html#aioa2squery.ServerType.UNKNOWN" title="aioa2squery.ServerType.UNKNOWN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ServerType.UNKNOWN</span></code></a> for
+<a class="reference internal" href="responses.html#aioa2squery.A2SInfoResponse.server_type" title="aioa2squery.A2SInfoResponse.server_type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">aioa2squery.A2SInfoResponse.server_type</span></code></a> in the response.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://developer.valvesoftware.com/wiki/SourceTV">HLTV</a> servers may respond with a late request that is either incomplete or incorrect
+if the number of slots is 255.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> – Host of the server to query</p></li>
+<li><p><strong>port</strong> – Port of server to query</p></li>
+<li><p><strong>timeout</strong> – Timeout duration (in seconds) when making <a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_Queries">server queries</a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/asyncio-exceptions.html#asyncio.TimeoutError" title="(in Python v3.8)"><strong>asyncio.TimeoutError</strong></a> – If query takes exceeds timeout duration</p></li>
+<li><p><a class="reference internal" href="exceptions.html#aioa2squery.ResponseError" title="aioa2squery.ResponseError"><strong>aioa2squery.ResponseError</strong></a> – If there is a problem completing, reading or parsing the response data</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Basic information about the server and the estimated ping to the server in milliseconds</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a>[<a class="reference internal" href="responses.html#aioa2squery.A2SInfoResponse" title="aioa2squery.A2SInfoResponse">A2SInfoResponse</a>, <a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)">int</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="aioa2squery.A2SQueryContext.query_players">
+<em class="property">async </em><code class="sig-name descname">query_players</code><span class="sig-paren">(</span><em class="sig-param">host: Optional[str] = '127.0.0.1'</em>, <em class="sig-param">port: Optional[int] = &lt;QueryPort.SRCDS: 27015&gt;</em>, <em class="sig-param">timeout: Optional[float] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[aioa2squery.responses.A2SPlayersResponse, int]<a class="headerlink" href="#aioa2squery.A2SQueryContext.query_players" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve information about the players currently on the server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://developer.valvesoftware.com/wiki/SourceTV">SourceTV</a> does not respond to this query.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a player is trying to connect to a server, they are recorded in the number of players. However, they
+will not be in the list of player information.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference external" href="https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers">Counter-Strike: Global Offensive Dedicated Server</a> by default returns only max players and server
+<a class="reference external" href="https://wikipedia.org/wiki/Uptime">uptime</a>. You have to change server <a class="reference external" href="https://developer.valvesoftware.com/wiki/ConVar">CVar</a> <code class="code docutils literal notranslate"><span class="pre">&quot;host_players_show&quot;</span></code> in
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Server.cfg">server.cfg</a> to value <code class="code docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code> (show full info) if you want to revert to old
+format with players list.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> – Host of the server to query</p></li>
+<li><p><strong>port</strong> – Port of server to query</p></li>
+<li><p><strong>timeout</strong> – Timeout duration (in seconds) when making <a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_Queries">server queries</a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/asyncio-exceptions.html#asyncio.TimeoutError" title="(in Python v3.8)"><strong>asyncio.TimeoutError</strong></a> – If query takes exceeds timeout duration</p></li>
+<li><p><a class="reference internal" href="exceptions.html#aioa2squery.ResponseError" title="aioa2squery.ResponseError"><strong>aioa2squery.ResponseError</strong></a> – If there is a problem completing, reading or parsing the response data</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Details about each player on the server and the estimated ping to the server in milliseconds</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="responses.html#aioa2squery.A2SPlayersResponse" title="aioa2squery.A2SPlayersResponse">A2SPlayersResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="aioa2squery.A2SQueryContext.query_rules">
+<em class="property">async </em><code class="sig-name descname">query_rules</code><span class="sig-paren">(</span><em class="sig-param">host: Optional[str] = '127.0.0.1'</em>, <em class="sig-param">port: Optional[int] = &lt;QueryPort.SRCDS: 27015&gt;</em>, <em class="sig-param">timeout: Optional[float] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[aioa2squery.responses.A2SRulesResponse, int]<a class="headerlink" href="#aioa2squery.A2SQueryContext.query_rules" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Older games, usually on <a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_2007">Source SDK 2007</a>, may reply with a truncated response. In
+this case, the data may be terminated in the middle of a string or in between a name and value.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> – Host of the server to query</p></li>
+<li><p><strong>port</strong> – Port of server to query</p></li>
+<li><p><strong>timeout</strong> – Timeout duration (in seconds) when making <a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_Queries">server queries</a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/asyncio-exceptions.html#asyncio.TimeoutError" title="(in Python v3.8)"><strong>asyncio.TimeoutError</strong></a> – If query takes exceeds timeout duration</p></li>
+<li><p><a class="reference internal" href="exceptions.html#aioa2squery.ResponseError" title="aioa2squery.ResponseError"><strong>aioa2squery.ResponseError</strong></a> – If there is a problem completing, reading or parsing the response data</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The rules the server is using and the estimated ping to the server in milliseconds</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="responses.html#aioa2squery.A2SPlayersResponse" title="aioa2squery.A2SPlayersResponse">A2SPlayersResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="aioa2squery.A2SQueryContext.query_ping">
+<code class="sig-name descname">query_ping</code><span class="sig-paren">(</span><em class="sig-param">host: Optional[str] = '127.0.0.1'</em>, <em class="sig-param">port: Optional[int] = &lt;QueryPort.SRCDS: 27015&gt;</em>, <em class="sig-param">timeout: Optional[float] = None</em><span class="sig-paren">)</span> &#x2192; Tuple[aioa2squery.responses.A2SPingResponse, int]<a class="headerlink" href="#aioa2squery.A2SQueryContext.query_ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ping the server to see if it exists, this can be used to calculate the latency to the server.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>According to <a class="reference external" href="https://developer.valvesoftware.com/wiki/Valve">Valve</a> (see <a class="reference external" href="https://developer.valvesoftware.com/wiki/Talk:Server_queries#A2A_PING_no_longer_supported.3F">Talk Page</a>), <a class="reference external" href="https://wiki.teamfortress.com/wiki/Dedicated_server"><code class="docutils literal notranslate"><span class="pre">A2A_PING</span></code></a> is no longer supported on
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Counter-Strike:_Source">Counter Strike: Source</a> and <a class="reference external" href="https://developer.valvesoftware.com/wiki/Team Fortress 2">Team Fortress 2</a> <a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_Dedicated_Server">servers</a>, and is considered a deprecated feature.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>host</strong> – Host of the server to query</p></li>
+<li><p><strong>port</strong> – Port of server to query</p></li>
+<li><p><strong>timeout</strong> – Timeout duration (in seconds) when making <a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_Queries">server queries</a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3.8/library/asyncio-exceptions.html#asyncio.TimeoutError" title="(in Python v3.8)"><strong>asyncio.TimeoutError</strong></a> – If query takes exceeds timeout duration</p></li>
+<li><p><a class="reference internal" href="exceptions.html#aioa2squery.ResponseError" title="aioa2squery.ResponseError"><strong>aioa2squery.ResponseError</strong></a> – If there is a problem completing, reading or parsing the response data</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Calculated ping (round-trip latency) to the server</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3.8/library/functions.html#int" title="(in Python v3.8)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">aioa2squery</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Query Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responses.html">Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom.html">Crafting Custom Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enumerations.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Errors &amp; Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="examples.html" title="previous chapter">Examples</a></li>
+      <li>Next: <a href="responses.html" title="next chapter">Responses</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, insurgency.gg.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/client.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

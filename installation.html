@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Installing &#8212; aioa2squery  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="AsyncIO Any to Server (A2S) Query Library" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="installing">
+<h1>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h1>
+<p>We do <strong>not</strong> provide package distribution via <a class="reference external" href="https://pypi.org">PyPI</a> for <strong>any</strong> of our
+Python libraries. However, we do follow a <a class="reference external" href="https://semver.org">semantic versioning scheme</a> with our <a class="reference external" href="https://git-scm.com">git</a> <a class="reference external" href="https://github.com/insurgency/aioa2squery/releases">release tags</a>. You can install the
+library from the git repository’s <a class="reference external" href="https://github.com/insurgency/aioa2squery/tree/branches/stable">stable</a> branch,
+which denotes that most current stable release version of the library, or
+alternatively you can pass a <a class="reference external" href="https://github.com/insurgency/aioa2squery/tags">tag name</a> to use a specific pinned
+version.</p>
+<p>Refer to the <a class="reference external" href="https://pip.pypa.io/en/stable/reference/pip_install#git"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> sub-command documentation</a> for more details on
+installing <a class="reference external" href="https://packaging.python.org/">Python packages</a> from
+<a class="reference external" href="https://wikipedia.org/wiki/Version_control">version control systems</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to have <a class="reference external" href="https://git-scm.com">git</a> installed and accessible from your system <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> in
+order to run the source cloning  operation with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span>
+<span class="pre">git+protocol//...</span></code></p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># Install the library package using git over HTTPS with pip...</span>
+$ pip3 install <span class="s1">&#39;git+https://github.com/insurgency/aioa2squery.git@stable#egg=aioa2squery&#39;</span>
+$ <span class="c1"># Or with Pipenv...</span>
+$ pipenv install <span class="s1">&#39;git+https://github.com/insurgency/aioa2squery.git@stable#egg=aioa2squery&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Our library packages only officially support the most current release
+version of CPython. Any other Python interpreter version is unsupported.</p>
+</div>
+<div class="section" id="using-virtualenv-or-pipenv">
+<h2>Using Virtualenv or Pipenv<a class="headerlink" href="#using-virtualenv-or-pipenv" title="Permalink to this headline">¶</a></h2>
+<p>We <strong>highly</strong> recommend users to make use of virtualenv or Pipenv in order to
+isolate your project dependencies from that of your system Python installation.
+If you have never used or are unfamiliar with virtualenv we recommend you read
+the documentation regarding installing Python packages using pip and virtualenv
+or the virtualenv documentation itself to get started. This allows you to avoid
+bloating your system Python installation packages while simultaneously allowing
+you to pin different package versions for use in in an individual project.</p>
+</div>
+<div class="section" id="verifying-package-signatures">
+<h2>Verifying Package Signatures<a class="headerlink" href="#verifying-package-signatures" title="Permalink to this headline">¶</a></h2>
+<p>We make a best effort to use cryptographic signing wherever possible. All of
+our publicly distributed Python library packages are signed using <a class="reference external" href="https://gist.github.com/h1nk/a05e040aae61baad1d4836b42d46b772">our
+organization’s PGP public key</a>.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">aioa2squery</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-virtualenv-or-pipenv">Using Virtualenv or Pipenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-package-signatures">Verifying Package Signatures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Query Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responses.html">Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom.html">Crafting Custom Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enumerations.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Errors &amp; Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">AsyncIO Any to Server (A2S) Query Library</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, insurgency.gg.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

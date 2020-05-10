@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>AsyncIO Any to Server (A2S) Query Library &#8212; aioa2squery  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installing" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="asyncio-any-to-server-a2s-query-library">
+<h1>AsyncIO Any to Server (A2S) Query Library<a class="headerlink" href="#asyncio-any-to-server-a2s-query-library" title="Permalink to this headline">¶</a></h1>
+<p>This library is an <a class="reference external" href="https://docs.python.org/3.8/library/asyncio.html#module-asyncio" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> implementation of the
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_queries">Any to Server (A2S) query protocol</a> for querying
+information from <a class="reference external" href="https://developer.valvesoftware.com/wiki/Goldsource">Goldsource</a> and
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_Engine">Source Engine</a>
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_Dedicated_Server">servers</a>. It provides a simplistic
+<a class="reference internal" href="client.html#query-client"><span class="std std-ref">client interface</span></a> that attempts to handle the nuances of
+querying different engine and game versions while allowing users to perform
+multiple concurrent queries.</p>
+<div class="section" id="documentation-contents">
+<h2>Documentation Contents<a class="headerlink" href="#documentation-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#using-virtualenv-or-pipenv">Using Virtualenv or Pipenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#verifying-package-signatures">Verifying Package Signatures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#simple-individual-queries">Simple Individual Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#querying-server-information">Querying Server Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#querying-online-players">Querying Online Players</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples.html#querying-server-configuration-rules">Querying Server Configuration Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#multiple-concurrent-queries">Multiple Concurrent Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#querying-a-22-network">Querying A /22 Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#constructing-a-primitive-query-server">Constructing a Primitive Query Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Query Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responses.html">Responses</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="responses.html#server-info">Server Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="responses.html#server-players">Server Players</a></li>
+<li class="toctree-l2"><a class="reference internal" href="responses.html#server-rules">Server Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="custom.html">Crafting Custom Queries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom.html#custom-query-requests-responses">Custom Query Requests &amp; Responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom.html#dataclass-field-types">dataclass Field Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom.html#helpful-enumeration-mixins">Helpful Enumeration Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="custom.html#automatic-object-str-method-generation">Automatic <code class="xref py py-meth docutils literal notranslate"><span class="pre">object.__str__()</span></code> method generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom.html#automatic-object-repr-method-generation">Automatic <code class="xref py py-meth docutils literal notranslate"><span class="pre">object.__repr__()</span></code> method generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="enumerations.html">Enumerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="enumerations.html#special-query-response-fields">Special Query Response Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enumerations.html#steam-application-ids">Steam Application IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enumerations.html#game-engine-versions">Game Engine Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enumerations.html#other">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Errors &amp; Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#query-client-exceptions">Query Client Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#code-style">Code Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#unit-tests-coverage">Unit Tests &amp; Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#building-documentation">Building Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">aioa2squery</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Query Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responses.html">Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom.html">Crafting Custom Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enumerations.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Errors &amp; Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="installation.html" title="next chapter">Installing</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, insurgency.gg.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

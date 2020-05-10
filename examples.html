@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Examples &#8212; aioa2squery  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Query Client" href="client.html" />
+    <link rel="prev" title="Installing" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>This page shows several brief code examples for making different types of
+server queries and also demonstrates how the <a class="reference internal" href="client.html#query-client"><span class="std std-ref">query client</span></a>
+can be used to execute queries concurrently.</p>
+<div class="section" id="simple-individual-queries">
+<h2>Simple Individual Queries<a class="headerlink" href="#simple-individual-queries" title="Permalink to this headline">¶</a></h2>
+<p>The following code examples show how to perform the different types of query
+requests available in the <a class="reference external" href="https://developer.valvesoftware.com/wiki/Server_queries#Requests">protocol</a> as well as
+access data from the corresponding response objects.</p>
+<div class="section" id="querying-server-information">
+<h3>Querying Server Information<a class="headerlink" href="#querying-server-information" title="Permalink to this headline">¶</a></h3>
+<p>This query retrieves basic information about the server such as the
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Hostname">hostname</a> of the server and the name of the current
+<a class="reference external" href="https://developer.valvesoftware.com/wiki/Map">map</a> being played.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">aioa2squery</span> <span class="kn">import</span> <span class="n">A2SQueryContext</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">A2SQueryContext</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span><span class="p">,</span> <span class="n">ping</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_info</span><span class="p">(</span><span class="s1">&#39;example.com&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Query timed out&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">game</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="querying-online-players">
+<h3>Querying Online Players<a class="headerlink" href="#querying-online-players" title="Permalink to this headline">¶</a></h3>
+<p>This query response returns a list of player objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># These two values are not necessarily the same number!</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">A2SPlayersResponse</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A2SPlayersResponse</span><span class="o">.</span><span class="n">players</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">aioa2squery</span> <span class="kn">import</span> <span class="n">A2SQueryContext</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">A2SQueryContext</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_players</span><span class="p">(</span><span class="s1">&#39;example.com&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Query timed out&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">player</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">player</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="querying-server-configuration-rules">
+<h3>Querying Server Configuration Rules<a class="headerlink" href="#querying-server-configuration-rules" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">aioa2squery</span> <span class="kn">import</span> <span class="n">A2SQueryContext</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">A2SQueryContext</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rules_list</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_rules</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Query timed out&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Rules responses implement dict-like behavior for key lookups</span>
+        <span class="n">bomb_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rules_list</span><span class="p">[</span><span class="s1">&#39;mp_c4timer&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to determine the server&#39;s bomb timer&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The bomb takes&quot;</span><span class="p">,</span> <span class="n">bomb_time</span><span class="p">,</span> <span class="s2">&quot;seconds to explode&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-concurrent-queries">
+<h2>Multiple Concurrent Queries<a class="headerlink" href="#multiple-concurrent-queries" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s actually leverage <a class="reference external" href="https://docs.python.org/3.8/library/asyncio.html#module-asyncio" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> to execute multiple concurrent
+queries. Here we’re querying a few ports across a single host:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="kn">from</span> <span class="nn">aioa2squery</span> <span class="kn">import</span> <span class="n">A2SQueryContext</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">A2SQueryContext</span><span class="p">()</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
+
+    <span class="n">queries</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="nb">range</span><span class="p">(</span><span class="mi">27050</span><span class="p">,</span> <span class="mi">27053</span><span class="p">):</span>
+        <span class="n">queries</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">query_info</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="c1"># Schedule query calls concurrently and capture exceptions</span>
+    <span class="n">completed</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="o">*</span><span class="n">queries</span><span class="p">,</span> <span class="n">return_when</span><span class="o">=</span><span class="n">ALL_COMPLETED</span><span class="p">)</span>
+
+    <span class="c1"># Show results for each ping</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">completed</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="o">.</span><span class="n">exception</span><span class="p">():</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">ping</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">ping</span><span class="si">}</span><span class="s1">ms)&#39;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="querying-a-22-network">
+<h2>Querying A /22 Network<a class="headerlink" href="#querying-a-22-network" title="Permalink to this headline">¶</a></h2>
+<p>In the following example we’ll <em>attempt</em> to query all of the hosts on a
+contiguous <span class="math notranslate nohighlight">\(/22\)</span> network prefix allocated to <a class="reference external" href="https://whois.arin.net/rest/net/NET-208-78-164-0-1">Valve Corporation</a>. We’ll iterate over an
+<a class="reference external" href="https://docs.python.org/3.8/library/ipaddress.html#ipaddress.IPv4Network" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Network</span></code></a> that we create with the
+<a class="reference external" href="https://docs.python.org/3.8/library/ipaddress.html#ipaddress.ip_network" title="(in Python v3.8)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ip_network</span></code></a> function and query several hosts
+concurrently using the default <a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_Dedicated_Server">Source Dedicated Server</a> port of <span class="math notranslate nohighlight">\(27015\)</span>.</p>
+<p>Since we’re going to be querying such a large network block
+(<span class="math notranslate nohighlight">\(2^{32-22}=1024\)</span> hosts) we may want to limit the concurrent execution of
+our queries in order to avoid exceeding any socket/open <a class="reference external" href="https://wikipedia.org/wiki/File_descriptor">file
+descriptor</a> resource limits. Additionally, we’ll reduce the
+memory consumption by scheduling subsequent queries as previous ones complete
+or timeout, rather than eagerly creating <cite>all</cite> 1,024 <a class="reference external" href="https://docs.python.org/3.8/library/asyncio-task.html#asyncio.Task" title="(in Python v3.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a> objects beforehand.</p>
+<p>All of this can be achieved fairly easily using some of
+<a class="reference external" href="https://docs.python.org/3.8/library/asyncio.html#module-asyncio" title="(in Python v3.8)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a>’s built-in <a class="reference external" href="https://docs.python.org/3.8/library/asyncio-sync.html#asyncio-sync" title="(in Python v3.8)"><span class="xref std std-ref">synchronization primitives</span></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">ipaddress</span> <span class="kn">import</span> <span class="n">ip_network</span>
+<span class="kn">from</span> <span class="nn">aioa2squery</span> <span class="kn">import</span> <span class="n">A2SQueryContext</span>
+
+<span class="c1"># Set for tracking currently running queries</span>
+<span class="n">query_tasks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">start</span><span class="p">():</span>
+    <span class="c1"># A query client instance is needed as always</span>
+    <span class="n">query_client</span> <span class="o">=</span> <span class="n">A2SQueryContext</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="c1"># Using a semaphore we can limit the concurrency of our queries</span>
+    <span class="n">sem</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Semaphore</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+
+    <span class="c1"># Callback function for printing completed query results</span>
+    <span class="k">def</span> <span class="nf">print_query_result</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">query_task</span><span class="p">):</span>
+        <span class="c1"># Print results for queries that completed without errors...</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">query_task</span><span class="o">.</span><span class="n">exception</span><span class="p">():</span>
+            <span class="n">response</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">query_task</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+            <span class="n">players</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0.players}</span><span class="s2">/</span><span class="si">{0.max_players}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">players</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Remove finished task and release semaphore</span>
+        <span class="n">query_tasks</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">query_task</span><span class="p">)</span>
+        <span class="n">sem</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+    <span class="c1"># Loop over hosts in this IPv4 network</span>
+    <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">ip_network</span><span class="p">(</span><span class="s1">&#39;208.78.164.0/22&#39;</span><span class="p">):</span>
+        <span class="c1"># Suspend loop while we&#39;re unable to queue additional queries</span>
+        <span class="k">await</span> <span class="n">sem</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+
+        <span class="c1"># Schedule the query as a task</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="n">query_client</span><span class="o">.</span><span class="n">query_info</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ip</span><span class="p">))</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="c1"># Attach our done callback for printing task results</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">print_query_result</span><span class="p">,</span> <span class="n">ip</span><span class="p">))</span>
+        <span class="c1"># Add the task to the set</span>
+        <span class="n">query_tasks</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+    <span class="c1"># Await remaining tasks to complete</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">query_tasks</span><span class="p">,</span> <span class="n">return_exceptions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">start</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>We can watch the execution behavior of the semaphore mechanism by monitoring
+the total number of open socket file descriptors while the script is running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># The bound of our semaphore limits the amount of open sockets</span>
+$ sudo watch <span class="s2">&quot;lsof -n -i4UDP:27015 | wc -l&quot;</span>
+</pre></div>
+</div>
+<p>We can also roughly estimate the <cite>expected</cite> execution time given the
+concurrency, number of tasks, and the configured timeout duration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="mi">1_024</span> <span class="o">*</span> <span class="mf">1.5</span> <span class="o">/</span> <span class="mi">25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">61</span> <span class="c1"># Should take a maximum of a little less than a minute to complete</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Testing this using a simple timing benchmark:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_even_loop</span><span class="p">();</span> <span class="n">before</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">start</span><span class="p">());</span> <span class="n">after</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Completed in&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">after</span> <span class="o">-</span> <span class="n">before</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The library includes a more full-fledged version of the above code as a
+single command:</p>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ a2squery query --help
+Usage: a2squery query [-h] (--info | --players | --rules | --ping) [-p PORTS]
+                      [-t SECONDS] [-i FILE] [--app ID] [--source | --goldsrc]
+                      [CIDR [CIDR ...]]
+
+Query game servers
+
+Positional Arguments:
+  CIDR                  Network to query
+
+Optional Arguments:
+  -h, --help            Show this help message and exit
+  -p PORTS, --ports PORTS
+                        Destination ports
+  -t SECONDS, --timeout SECONDS
+                        Query timeout duration
+  -i FILE, --input-file FILE
+                        Query networks from an external FILE
+
+Query Type:
+  Type of server query to perform
+
+  --info                Query server information
+  --players             Query servers&#39; online players
+  --rules               Query server rules
+  --ping                Query server ping
+
+App &amp; Engine Type:
+  App ID or game engine version to query
+
+  --app ID              Query specific App ID
+  --source, --source-engine
+                        Perform Source Engine queries (default)
+  --goldsrc, --goldsource
+                        Perform GoldSrc queries
+</pre></div>
+</div>
+<img alt="_images/demo.svg" class="align-center" src="_images/demo.svg" /><p>This is also available from a pre-built <a class="reference external" href="https://www.docker.com">Docker</a>
+image for your convenience:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ docker run -it --rm docker.pkg.github.com/insurgency/aioa2squery/a2squery
+query --help
+
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="constructing-a-primitive-query-server">
+<h2>Constructing a Primitive Query Server<a class="headerlink" href="#constructing-a-primitive-query-server" title="Permalink to this headline">¶</a></h2>
+<p>We can leverage a lot of the library to create a little static demo query
+server, that would perhaps be useful for testing purposes. This could even
+be extended to build a reverse proxy server.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">aioa2squery</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simple-individual-queries">Simple Individual Queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#querying-server-information">Querying Server Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#querying-online-players">Querying Online Players</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#querying-server-configuration-rules">Querying Server Configuration Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-concurrent-queries">Multiple Concurrent Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-a-22-network">Querying A /22 Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constructing-a-primitive-query-server">Constructing a Primitive Query Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Query Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responses.html">Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom.html">Crafting Custom Queries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enumerations.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Errors &amp; Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installing</a></li>
+      <li>Next: <a href="client.html" title="next chapter">Query Client</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, insurgency.gg.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/examples.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

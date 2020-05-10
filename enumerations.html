@@ -1,0 +1,1414 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Enumerations &#8212; aioa2squery  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Errors &amp; Exceptions" href="exceptions.html" />
+    <link rel="prev" title="Crafting Custom Queries" href="custom.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="enumerations">
+<h1>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="special-query-response-fields">
+<h2>Special Query Response Fields<a class="headerlink" href="#special-query-response-fields" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="aioa2squery.ServerType">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">ServerType</code><a class="headerlink" href="#aioa2squery.ServerType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates the type of server</p>
+<dl class="attribute">
+<dt id="aioa2squery.ServerType.UNKNOWN">
+<code class="sig-name descname">UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#aioa2squery.ServerType.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>No particular server type</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerType.DEDICATED_SERVER">
+<code class="sig-name descname">DEDICATED_SERVER</code><em class="property"> = 100</em><a class="headerlink" href="#aioa2squery.ServerType.DEDICATED_SERVER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://developer.valvesoftware.com/wiki/Source_Dedicated_Server">Dedicated game server</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerType.LISTEN">
+<code class="sig-name descname">LISTEN</code><em class="property"> = 108</em><a class="headerlink" href="#aioa2squery.ServerType.LISTEN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Non-dedicated local <a class="reference external" href="https://support.steampowered.com/kb_article.php?ref=5452-TASB-6078">listen server</a>
+(<a class="reference external" href="https://developer.valvesoftware.com/wiki/Preventing_Players_from_Joining_a_Map">LAN</a>/<code class="docutils literal notranslate"><span class="pre">sv_lan</span> <span class="pre">&quot;0&quot;</span></code>)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerType.NON_DEDICATED_SERVER">
+<code class="sig-name descname">NON_DEDICATED_SERVER</code><em class="property"> = 108</em><a class="headerlink" href="#aioa2squery.ServerType.NON_DEDICATED_SERVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#aioa2squery.ServerType.LISTEN" title="aioa2squery.ServerType.LISTEN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">LISTEN</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerType.SOURCETV_RELAY_PROXY">
+<code class="sig-name descname">SOURCETV_RELAY_PROXY</code><em class="property"> = 112</em><a class="headerlink" href="#aioa2squery.ServerType.SOURCETV_RELAY_PROXY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://developer.valvesoftware.com/wiki/SourceTV">SourceTV</a>/HLTV Relay Proxy</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aioa2squery.ServerEnvironment">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">ServerEnvironment</code><a class="headerlink" href="#aioa2squery.ServerEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates the operating system of the server</p>
+<dl class="attribute">
+<dt id="aioa2squery.ServerEnvironment.UNKNOWN">
+<code class="sig-name descname">UNKNOWN</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.ServerEnvironment.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>No particular operating system</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerEnvironment.LINUX">
+<code class="sig-name descname">LINUX</code><em class="property"> = 108</em><a class="headerlink" href="#aioa2squery.ServerEnvironment.LINUX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linux</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerEnvironment.WINDOWS">
+<code class="sig-name descname">WINDOWS</code><em class="property"> = 119</em><a class="headerlink" href="#aioa2squery.ServerEnvironment.WINDOWS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Windows</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerEnvironment.MAC">
+<code class="sig-name descname">MAC</code><em class="property"> = 109</em><a class="headerlink" href="#aioa2squery.ServerEnvironment.MAC" title="Permalink to this definition">¶</a></dt>
+<dd><p>macOS</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerEnvironment.OSX">
+<code class="sig-name descname">OSX</code><em class="property"> = 111</em><a class="headerlink" href="#aioa2squery.ServerEnvironment.OSX" title="Permalink to this definition">¶</a></dt>
+<dd><p>OSX</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aioa2squery.ServerVisibility">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">ServerVisibility</code><a class="headerlink" href="#aioa2squery.ServerVisibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the server requires a password for entry</p>
+<dl class="attribute">
+<dt id="aioa2squery.ServerVisibility.PUBLIC">
+<code class="sig-name descname">PUBLIC</code><em class="property"> = 0</em><a class="headerlink" href="#aioa2squery.ServerVisibility.PUBLIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server is publicly accessible without a password</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerVisibility.PRIVATE">
+<code class="sig-name descname">PRIVATE</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.ServerVisibility.PRIVATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server is private and requires a password for entry into multiplayer</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.ServerVisibility.PASSWORDED">
+<code class="sig-name descname">PASSWORDED</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.ServerVisibility.PASSWORDED" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#aioa2squery.ServerVisibility.PRIVATE" title="aioa2squery.ServerVisibility.PRIVATE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">PRIVATE</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aioa2squery.TheShipGameMode">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">TheShipGameMode</code><a class="headerlink" href="#aioa2squery.TheShipGameMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gamemodes for <a class="reference external" href="https://developer.valvesoftware.com/wiki/The_Ship">The Ship</a></p>
+<dl class="attribute">
+<dt id="aioa2squery.TheShipGameMode.HUNT">
+<code class="sig-name descname">HUNT</code><em class="property"> = 0</em><a class="headerlink" href="#aioa2squery.TheShipGameMode.HUNT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hunt</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.TheShipGameMode.ELIMINATION">
+<code class="sig-name descname">ELIMINATION</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.TheShipGameMode.ELIMINATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elimination</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.TheShipGameMode.DUEL">
+<code class="sig-name descname">DUEL</code><em class="property"> = 2</em><a class="headerlink" href="#aioa2squery.TheShipGameMode.DUEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Duel</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.TheShipGameMode.DEATHMATCH">
+<code class="sig-name descname">DEATHMATCH</code><em class="property"> = 3</em><a class="headerlink" href="#aioa2squery.TheShipGameMode.DEATHMATCH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deathmatch</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.TheShipGameMode.VIP_TEAM">
+<code class="sig-name descname">VIP_TEAM</code><em class="property"> = 4</em><a class="headerlink" href="#aioa2squery.TheShipGameMode.VIP_TEAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>VIP Team</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.TheShipGameMode.TEAM_ELIMINATION">
+<code class="sig-name descname">TEAM_ELIMINATION</code><em class="property"> = 5</em><a class="headerlink" href="#aioa2squery.TheShipGameMode.TEAM_ELIMINATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Team Elimination</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="aioa2squery.VAC">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">VAC</code><a class="headerlink" href="#aioa2squery.VAC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specifies whether the server uses <a class="reference external" href="https://developer.valvesoftware.com/wiki/Valve_Anti-Cheat">VAC</a> (Valve Anti-Cheat)</p>
+<dl class="attribute">
+<dt id="aioa2squery.VAC.UNSECURED">
+<code class="sig-name descname">UNSECURED</code><em class="property"> = 0</em><a class="headerlink" href="#aioa2squery.VAC.UNSECURED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Anti-cheat is disabled</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.VAC.INSECURE">
+<code class="sig-name descname">INSECURE</code><em class="property"> = 0</em><a class="headerlink" href="#aioa2squery.VAC.INSECURE" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#aioa2squery.VAC.UNSECURED" title="aioa2squery.VAC.UNSECURED"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UNSECURED</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.VAC.SECURED">
+<code class="sig-name descname">SECURED</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.VAC.SECURED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Anti-cheat is active</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="steam-application-ids">
+<h2>Steam Application IDs<a class="headerlink" href="#steam-application-ids" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="aioa2squery.AppID">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">AppID</code><a class="headerlink" href="#aioa2squery.AppID" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration of common <a class="reference external" href="https://developer.valvesoftware.com/wiki/Steam_Application_IDs">Steam Application IDs</a> that handle queries
+differently. Can be used with the <code class="docutils literal notranslate"><span class="pre">app_id</span></code> parameter of the
+<a class="reference internal" href="client.html#aioa2squery.A2SQueryContext" title="aioa2squery.A2SQueryContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">A2SQueryContext</span></code></a> constructor.</p>
+<dl class="attribute">
+<dt id="aioa2squery.AppID.COUNTER_STRIKE">
+<code class="sig-name descname">COUNTER_STRIKE</code><em class="property"> = 10</em><a class="headerlink" href="#aioa2squery.AppID.COUNTER_STRIKE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/10">Counter-Strike</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TEAM_FORTRESS_CLASSIC">
+<code class="sig-name descname">TEAM_FORTRESS_CLASSIC</code><em class="property"> = 20</em><a class="headerlink" href="#aioa2squery.AppID.TEAM_FORTRESS_CLASSIC" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/20">Team Fortress Classic</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAY_OF_DEFEAT">
+<code class="sig-name descname">DAY_OF_DEFEAT</code><em class="property"> = 30</em><a class="headerlink" href="#aioa2squery.AppID.DAY_OF_DEFEAT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/30">Day of Defeat</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DEATHMATCH_CLASSIC">
+<code class="sig-name descname">DEATHMATCH_CLASSIC</code><em class="property"> = 40</em><a class="headerlink" href="#aioa2squery.AppID.DEATHMATCH_CLASSIC" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/40">Deathmatch Classic</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HALF_LIFE_OPPOSING_FORCE">
+<code class="sig-name descname">HALF_LIFE_OPPOSING_FORCE</code><em class="property"> = 50</em><a class="headerlink" href="#aioa2squery.AppID.HALF_LIFE_OPPOSING_FORCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/50">Half-Life: Opposing Force</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RICOCHET">
+<code class="sig-name descname">RICOCHET</code><em class="property"> = 60</em><a class="headerlink" href="#aioa2squery.AppID.RICOCHET" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/60">Ricochet</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HALF_LIFE">
+<code class="sig-name descname">HALF_LIFE</code><em class="property"> = 70</em><a class="headerlink" href="#aioa2squery.AppID.HALF_LIFE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/70">Half-Life</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.COUNTER_STRIKE_CONDITION_ZERO">
+<code class="sig-name descname">COUNTER_STRIKE_CONDITION_ZERO</code><em class="property"> = 80</em><a class="headerlink" href="#aioa2squery.AppID.COUNTER_STRIKE_CONDITION_ZERO" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/80">Counter-Strike: Condition Zero</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SOURCE_SDK_BASE_2006">
+<code class="sig-name descname">SOURCE_SDK_BASE_2006</code><em class="property"> = 215</em><a class="headerlink" href="#aioa2squery.AppID.SOURCE_SDK_BASE_2006" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/215">Source SDK Base 2006</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SOURCE_SDK_BASE_2007">
+<code class="sig-name descname">SOURCE_SDK_BASE_2007</code><em class="property"> = 218</em><a class="headerlink" href="#aioa2squery.AppID.SOURCE_SDK_BASE_2007" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/218">Source SDK Base 2007</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.COUNTER_STRIKE_SOURCE">
+<code class="sig-name descname">COUNTER_STRIKE_SOURCE</code><em class="property"> = 240</em><a class="headerlink" href="#aioa2squery.AppID.COUNTER_STRIKE_SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/240">Counter-Strike: Source</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAY_OF_DEFEAT_SOURCE">
+<code class="sig-name descname">DAY_OF_DEFEAT_SOURCE</code><em class="property"> = 300</em><a class="headerlink" href="#aioa2squery.AppID.DAY_OF_DEFEAT_SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/300">Day of Defeat: Source</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HALF_LIFE_2_DEATHMATCH">
+<code class="sig-name descname">HALF_LIFE_2_DEATHMATCH</code><em class="property"> = 320</em><a class="headerlink" href="#aioa2squery.AppID.HALF_LIFE_2_DEATHMATCH" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/320">Half-Life 2: Deathmatch</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HALF_LIFE_DEATHMATCH_SOURCE">
+<code class="sig-name descname">HALF_LIFE_DEATHMATCH_SOURCE</code><em class="property"> = 360</em><a class="headerlink" href="#aioa2squery.AppID.HALF_LIFE_DEATHMATCH_SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/360">Half-Life Deathmatch: Source</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TEAM_FORTRESS_2">
+<code class="sig-name descname">TEAM_FORTRESS_2</code><em class="property"> = 440</em><a class="headerlink" href="#aioa2squery.AppID.TEAM_FORTRESS_2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/440">Team Fortress 2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SPACEWAR">
+<code class="sig-name descname">SPACEWAR</code><em class="property"> = 480</em><a class="headerlink" href="#aioa2squery.AppID.SPACEWAR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/480">Spacewar</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.LEFT_4_DEAD">
+<code class="sig-name descname">LEFT_4_DEAD</code><em class="property"> = 500</em><a class="headerlink" href="#aioa2squery.AppID.LEFT_4_DEAD" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/500">Left 4 Dead</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.LEFT_4_DEAD_2">
+<code class="sig-name descname">LEFT_4_DEAD_2</code><em class="property"> = 550</em><a class="headerlink" href="#aioa2squery.AppID.LEFT_4_DEAD_2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/550">Left 4 Dead 2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ALIEN_SWARM">
+<code class="sig-name descname">ALIEN_SWARM</code><em class="property"> = 630</em><a class="headerlink" href="#aioa2squery.AppID.ALIEN_SWARM" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/630">Alien Swarm</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RAG_DOLL_KUNG_FU">
+<code class="sig-name descname">RAG_DOLL_KUNG_FU</code><em class="property"> = 1002</em><a class="headerlink" href="#aioa2squery.AppID.RAG_DOLL_KUNG_FU" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1002">Rag Doll Kung Fu</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SIN_EPISODES_EMERGENCE">
+<code class="sig-name descname">SIN_EPISODES_EMERGENCE</code><em class="property"> = 1300</em><a class="headerlink" href="#aioa2squery.AppID.SIN_EPISODES_EMERGENCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1300">SiN Episodes: Emergence</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SIN_MULTIPLAYER">
+<code class="sig-name descname">SIN_MULTIPLAYER</code><em class="property"> = 1309</em><a class="headerlink" href="#aioa2squery.AppID.SIN_MULTIPLAYER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1309">SiN Multiplayer</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DARK_MESSIAH_OF_MIGHT_AND_MAGIC_MULTI_PLAYER">
+<code class="sig-name descname">DARK_MESSIAH_OF_MIGHT_AND_MAGIC_MULTI_PLAYER</code><em class="property"> = 2130</em><a class="headerlink" href="#aioa2squery.AppID.DARK_MESSIAH_OF_MIGHT_AND_MAGIC_MULTI_PLAYER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/2130">Dark Messiah of Might &amp; Magic Multi-Player</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.THE_SHIP">
+<code class="sig-name descname">THE_SHIP</code><em class="property"> = 2400</em><a class="headerlink" href="#aioa2squery.AppID.THE_SHIP" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/2400">The Ship</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BLOODY_GOOD_TIME">
+<code class="sig-name descname">BLOODY_GOOD_TIME</code><em class="property"> = 2450</em><a class="headerlink" href="#aioa2squery.AppID.BLOODY_GOOD_TIME" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/2450">Bloody Good Time</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.GARRYS_MOD">
+<code class="sig-name descname">GARRYS_MOD</code><em class="property"> = 4000</em><a class="headerlink" href="#aioa2squery.AppID.GARRYS_MOD" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/4000">Garry’s Mod</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CALL_OF_DUTY_4_MODERN_WARFARE">
+<code class="sig-name descname">CALL_OF_DUTY_4_MODERN_WARFARE</code><em class="property"> = 7940</em><a class="headerlink" href="#aioa2squery.AppID.CALL_OF_DUTY_4_MODERN_WARFARE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/7940">Call of Duty 4: Modern Warfare</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.GROUND_BRANCH">
+<code class="sig-name descname">GROUND_BRANCH</code><em class="property"> = 16900</em><a class="headerlink" href="#aioa2squery.AppID.GROUND_BRANCH" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/16900">GROUND BRANCH</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ZOMBIE_PANIC_SOURCE">
+<code class="sig-name descname">ZOMBIE_PANIC_SOURCE</code><em class="property"> = 17500</em><a class="headerlink" href="#aioa2squery.AppID.ZOMBIE_PANIC_SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17500">Zombie Panic! Source</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ZOMBIE_PANIC_SOURCE_DEDICATED_SERVER">
+<code class="sig-name descname">ZOMBIE_PANIC_SOURCE_DEDICATED_SERVER</code><em class="property"> = 17505</em><a class="headerlink" href="#aioa2squery.AppID.ZOMBIE_PANIC_SOURCE_DEDICATED_SERVER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17505">Zombie Panic! Source Dedicated Server</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.AGE_OF_CHIVALRY">
+<code class="sig-name descname">AGE_OF_CHIVALRY</code><em class="property"> = 17510</em><a class="headerlink" href="#aioa2squery.AppID.AGE_OF_CHIVALRY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17510">Age of Chivalry</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SYNERGY">
+<code class="sig-name descname">SYNERGY</code><em class="property"> = 17520</em><a class="headerlink" href="#aioa2squery.AppID.SYNERGY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17520">Synergy</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DIPRIP_WARM_UP">
+<code class="sig-name descname">DIPRIP_WARM_UP</code><em class="property"> = 17530</em><a class="headerlink" href="#aioa2squery.AppID.DIPRIP_WARM_UP" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17530">D.I.P.R.I.P. Warm Up</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ETERNAL_SILENCE">
+<code class="sig-name descname">ETERNAL_SILENCE</code><em class="property"> = 17550</em><a class="headerlink" href="#aioa2squery.AppID.ETERNAL_SILENCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17550">Eternal Silence</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PIRATES_VIKINGS_AND_KNIGHTS_II">
+<code class="sig-name descname">PIRATES_VIKINGS_AND_KNIGHTS_II</code><em class="property"> = 17570</em><a class="headerlink" href="#aioa2squery.AppID.PIRATES_VIKINGS_AND_KNIGHTS_II" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17570">Pirates, Vikings, &amp; Knights II</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DYSTOPIA">
+<code class="sig-name descname">DYSTOPIA</code><em class="property"> = 17580</em><a class="headerlink" href="#aioa2squery.AppID.DYSTOPIA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17580">Dystopia</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.INSURGENCY_MODERN_INFANTRY_COMBAT">
+<code class="sig-name descname">INSURGENCY_MODERN_INFANTRY_COMBAT</code><em class="property"> = 17700</em><a class="headerlink" href="#aioa2squery.AppID.INSURGENCY_MODERN_INFANTRY_COMBAT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17700">Insurgency: Modern Infantry Combat</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.NUCLEAR_DAWN">
+<code class="sig-name descname">NUCLEAR_DAWN</code><em class="property"> = 17710</em><a class="headerlink" href="#aioa2squery.AppID.NUCLEAR_DAWN" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17710">Nuclear Dawn</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SMASHBALL">
+<code class="sig-name descname">SMASHBALL</code><em class="property"> = 17730</em><a class="headerlink" href="#aioa2squery.AppID.SMASHBALL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17730">Smashball</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.EMPIRES">
+<code class="sig-name descname">EMPIRES</code><em class="property"> = 17740</em><a class="headerlink" href="#aioa2squery.AppID.EMPIRES" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/17740">Empires</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TOM_CLANCY_S_ENDWAR">
+<code class="sig-name descname">TOM_CLANCY_S_ENDWAR</code><em class="property"> = 21800</em><a class="headerlink" href="#aioa2squery.AppID.TOM_CLANCY_S_ENDWAR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/21800">Tom Clancy’s EndWar</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BOOSTER_TROOPER">
+<code class="sig-name descname">BOOSTER_TROOPER</code><em class="property"> = 27920</em><a class="headerlink" href="#aioa2squery.AppID.BOOSTER_TROOPER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/27920">Booster Trooper</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RISING_STORM_RED_ORCHESTRA_2_MULTIPLAYER">
+<code class="sig-name descname">RISING_STORM_RED_ORCHESTRA_2_MULTIPLAYER</code><em class="property"> = 35450</em><a class="headerlink" href="#aioa2squery.AppID.RISING_STORM_RED_ORCHESTRA_2_MULTIPLAYER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/35450">Rising Storm/Red Orchestra 2 Multiplayer</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HOMEFRONT">
+<code class="sig-name descname">HOMEFRONT</code><em class="property"> = 55100</em><a class="headerlink" href="#aioa2squery.AppID.HOMEFRONT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/55100">Homefront</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SNIPER_ELITE_V2">
+<code class="sig-name descname">SNIPER_ELITE_V2</code><em class="property"> = 63380</em><a class="headerlink" href="#aioa2squery.AppID.SNIPER_ELITE_V2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/63380">Sniper Elite V2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DINO_D_DAY">
+<code class="sig-name descname">DINO_D_DAY</code><em class="property"> = 70000</em><a class="headerlink" href="#aioa2squery.AppID.DINO_D_DAY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/70000">Dino D-Day</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.EYE_DIVINE_CYBERMANCY">
+<code class="sig-name descname">EYE_DIVINE_CYBERMANCY</code><em class="property"> = 91700</em><a class="headerlink" href="#aioa2squery.AppID.EYE_DIVINE_CYBERMANCY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/91700">E.Y.E: Divine Cybermancy</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PROJECT_ZOMBOID">
+<code class="sig-name descname">PROJECT_ZOMBOID</code><em class="property"> = 108600</em><a class="headerlink" href="#aioa2squery.AppID.PROJECT_ZOMBOID" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/108600">Project Zomboid</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.AMERICAS_ARMY_PROVING_GROUNDS">
+<code class="sig-name descname">AMERICAS_ARMY_PROVING_GROUNDS</code><em class="property"> = 203290</em><a class="headerlink" href="#aioa2squery.AppID.AMERICAS_ARMY_PROVING_GROUNDS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/203290">America’s Army: Proving Grounds</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PRIMAL_CARNAGE">
+<code class="sig-name descname">PRIMAL_CARNAGE</code><em class="property"> = 215470</em><a class="headerlink" href="#aioa2squery.AppID.PRIMAL_CARNAGE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/215470">Primal Carnage</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CHIVALRY_MEDIEVAL_WARFARE">
+<code class="sig-name descname">CHIVALRY_MEDIEVAL_WARFARE</code><em class="property"> = 219640</em><a class="headerlink" href="#aioa2squery.AppID.CHIVALRY_MEDIEVAL_WARFARE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/219640">Chivalry: Medieval Warfare</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAYZ">
+<code class="sig-name descname">DAYZ</code><em class="property"> = 221100</em><a class="headerlink" href="#aioa2squery.AppID.DAYZ" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/221100">DayZ</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.LEFT_4_DEAD_2_DEDICATED_SERVER">
+<code class="sig-name descname">LEFT_4_DEAD_2_DEDICATED_SERVER</code><em class="property"> = 222860</em><a class="headerlink" href="#aioa2squery.AppID.LEFT_4_DEAD_2_DEDICATED_SERVER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/222860">Left 4 Dead 2 Dedicated Server</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.INSURGENCY">
+<code class="sig-name descname">INSURGENCY</code><em class="property"> = 222880</em><a class="headerlink" href="#aioa2squery.AppID.INSURGENCY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/222880">Insurgency</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.NO_MORE_ROOM_IN_HELL">
+<code class="sig-name descname">NO_MORE_ROOM_IN_HELL</code><em class="property"> = 224260</em><a class="headerlink" href="#aioa2squery.AppID.NO_MORE_ROOM_IN_HELL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/224260">No More Room in Hell</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BLADE_SYMPHONY">
+<code class="sig-name descname">BLADE_SYMPHONY</code><em class="property"> = 225600</em><a class="headerlink" href="#aioa2squery.AppID.BLADE_SYMPHONY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/225600">Blade Symphony</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SVEN_CO_OP">
+<code class="sig-name descname">SVEN_CO_OP</code><em class="property"> = 225840</em><a class="headerlink" href="#aioa2squery.AppID.SVEN_CO_OP" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/225840">Sven Co-op</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.WRECKFEST">
+<code class="sig-name descname">WRECKFEST</code><em class="property"> = 228380</em><a class="headerlink" href="#aioa2squery.AppID.WRECKFEST" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/228380">Wreckfest</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.KILLING_FLOOR_2">
+<code class="sig-name descname">KILLING_FLOOR_2</code><em class="property"> = 232090</em><a class="headerlink" href="#aioa2squery.AppID.KILLING_FLOOR_2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/232090">Killing Floor 2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SNIPER_ELITE_3">
+<code class="sig-name descname">SNIPER_ELITE_3</code><em class="property"> = 238090</em><a class="headerlink" href="#aioa2squery.AppID.SNIPER_ELITE_3" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/238090">Sniper Elite 3</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CONTAGION">
+<code class="sig-name descname">CONTAGION</code><em class="property"> = 238430</em><a class="headerlink" href="#aioa2squery.AppID.CONTAGION" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/238430">Contagion</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SOURCE_SDK_BASE_2013_MULTIPLAYER">
+<code class="sig-name descname">SOURCE_SDK_BASE_2013_MULTIPLAYER</code><em class="property"> = 243750</em><a class="headerlink" href="#aioa2squery.AppID.SOURCE_SDK_BASE_2013_MULTIPLAYER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/243750">Source SDK Base 2013 Multiplayer</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.NEOTOKYO">
+<code class="sig-name descname">NEOTOKYO</code><em class="property"> = 244630</em><a class="headerlink" href="#aioa2squery.AppID.NEOTOKYO" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/244630">NEOTOKYO°</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SPACE_ENGINEERS">
+<code class="sig-name descname">SPACE_ENGINEERS</code><em class="property"> = 244850</em><a class="headerlink" href="#aioa2squery.AppID.SPACE_ENGINEERS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/244850">Space Engineers</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.STRIKE_VECTOR">
+<code class="sig-name descname">STRIKE_VECTOR</code><em class="property"> = 246700</em><a class="headerlink" href="#aioa2squery.AppID.STRIKE_VECTOR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/246700">Strike Vector</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.NETHER">
+<code class="sig-name descname">NETHER</code><em class="property"> = 247730</em><a class="headerlink" href="#aioa2squery.AppID.NETHER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/247730">Nether</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SEVEN_DAYS_TO_DIE">
+<code class="sig-name descname">SEVEN_DAYS_TO_DIE</code><em class="property"> = 251570</em><a class="headerlink" href="#aioa2squery.AppID.SEVEN_DAYS_TO_DIE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/251570">7 Days to Die</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RUST">
+<code class="sig-name descname">RUST</code><em class="property"> = 252490</em><a class="headerlink" href="#aioa2squery.AppID.RUST" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/252490">Rust</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.FORTRESS_FOREVER">
+<code class="sig-name descname">FORTRESS_FOREVER</code><em class="property"> = 253530</em><a class="headerlink" href="#aioa2squery.AppID.FORTRESS_FOREVER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/253530">Fortress Forever</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BLOCKSTORM">
+<code class="sig-name descname">BLOCKSTORM</code><em class="property"> = 263060</em><a class="headerlink" href="#aioa2squery.AppID.BLOCKSTORM" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/263060">Blockstorm</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.FISTFUL_OF_FRAGS">
+<code class="sig-name descname">FISTFUL_OF_FRAGS</code><em class="property"> = 265630</em><a class="headerlink" href="#aioa2squery.AppID.FISTFUL_OF_FRAGS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/265630">Fistful of Frags</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DEPTH">
+<code class="sig-name descname">DEPTH</code><em class="property"> = 274940</em><a class="headerlink" href="#aioa2squery.AppID.DEPTH" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/274940">Depth</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ROAD_REDEMPTION">
+<code class="sig-name descname">ROAD_REDEMPTION</code><em class="property"> = 300380</em><a class="headerlink" href="#aioa2squery.AppID.ROAD_REDEMPTION" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/300380">Road Redemption</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.UNTURNED">
+<code class="sig-name descname">UNTURNED</code><em class="property"> = 304930</em><a class="headerlink" href="#aioa2squery.AppID.UNTURNED" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/304930">Unturned</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DOUBLE_ACTION_BOOGALOO">
+<code class="sig-name descname">DOUBLE_ACTION_BOOGALOO</code><em class="property"> = 317360</em><a class="headerlink" href="#aioa2squery.AppID.DOUBLE_ACTION_BOOGALOO" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/317360">Double Action: Boogaloo</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PRIMAL_CARNAGE_EXTINCTION">
+<code class="sig-name descname">PRIMAL_CARNAGE_EXTINCTION</code><em class="property"> = 321360</em><a class="headerlink" href="#aioa2squery.AppID.PRIMAL_CARNAGE_EXTINCTION" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/321360">Primal Carnage: Extinction</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SUPRABALL">
+<code class="sig-name descname">SUPRABALL</code><em class="property"> = 321400</em><a class="headerlink" href="#aioa2squery.AppID.SUPRABALL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/321400">Supraball</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DONT_STARVE_TOGETHER">
+<code class="sig-name descname">DONT_STARVE_TOGETHER</code><em class="property"> = 322330</em><a class="headerlink" href="#aioa2squery.AppID.DONT_STARVE_TOGETHER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/322330">Don’t Starve Together</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RISING_WORLD">
+<code class="sig-name descname">RISING_WORLD</code><em class="property"> = 324080</em><a class="headerlink" href="#aioa2squery.AppID.RISING_WORLD" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/324080">Rising World</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TOKXIKK">
+<code class="sig-name descname">TOKXIKK</code><em class="property"> = 324810</em><a class="headerlink" href="#aioa2squery.AppID.TOKXIKK" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/324810">TOXIKK</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.GRAV">
+<code class="sig-name descname">GRAV</code><em class="property"> = 332500</em><a class="headerlink" href="#aioa2squery.AppID.GRAV" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/332500">GRAV</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.MEDIEVAL_ENGINEERS">
+<code class="sig-name descname">MEDIEVAL_ENGINEERS</code><em class="property"> = 333950</em><a class="headerlink" href="#aioa2squery.AppID.MEDIEVAL_ENGINEERS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/333950">Medieval Engineers</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.REIGN_OF_KINGS">
+<code class="sig-name descname">REIGN_OF_KINGS</code><em class="property"> = 344760</em><a class="headerlink" href="#aioa2squery.AppID.REIGN_OF_KINGS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/344760">Reign Of Kings</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ARK_SURVIVAL_EVOLVED">
+<code class="sig-name descname">ARK_SURVIVAL_EVOLVED</code><em class="property"> = 346110</em><a class="headerlink" href="#aioa2squery.AppID.ARK_SURVIVAL_EVOLVED" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/346110">ARK: Survival Evolved</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BRAINBREAD_2">
+<code class="sig-name descname">BRAINBREAD_2</code><em class="property"> = 346330</em><a class="headerlink" href="#aioa2squery.AppID.BRAINBREAD_2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/346330">BrainBread 2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.MODULAR_COMBAT">
+<code class="sig-name descname">MODULAR_COMBAT</code><em class="property"> = 349480</em><a class="headerlink" href="#aioa2squery.AppID.MODULAR_COMBAT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/349480">Modular Combat</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HANAKO_HONOR_AND_BLADE_EARLY_ACCESS">
+<code class="sig-name descname">HANAKO_HONOR_AND_BLADE_EARLY_ACCESS</code><em class="property"> = 349510</em><a class="headerlink" href="#aioa2squery.AppID.HANAKO_HONOR_AND_BLADE_EARLY_ACCESS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/349510">Hanako: Honor &amp; Blade Early Access</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CODENAME_CURE">
+<code class="sig-name descname">CODENAME_CURE</code><em class="property"> = 355180</em><a class="headerlink" href="#aioa2squery.AppID.CODENAME_CURE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/355180">Codename CURE</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DIESEL_GUNS">
+<code class="sig-name descname">DIESEL_GUNS</code><em class="property"> = 355400</em><a class="headerlink" href="#aioa2squery.AppID.DIESEL_GUNS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/355400">Diesel Guns</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.THE_MEAN_GREENS_PLASTIC_WARFARE">
+<code class="sig-name descname">THE_MEAN_GREENS_PLASTIC_WARFARE</code><em class="property"> = 360940</em><a class="headerlink" href="#aioa2squery.AppID.THE_MEAN_GREENS_PLASTIC_WARFARE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/360940">The Mean Greens - Plastic Warfare</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BLACK_MESA">
+<code class="sig-name descname">BLACK_MESA</code><em class="property"> = 362890</em><a class="headerlink" href="#aioa2squery.AppID.BLACK_MESA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/362890">Black Mesa</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RFACTOR_2">
+<code class="sig-name descname">RFACTOR_2</code><em class="property"> = 365960</em><a class="headerlink" href="#aioa2squery.AppID.RFACTOR_2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/365960">rFactor 2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ANGELS_FALL_FIRST">
+<code class="sig-name descname">ANGELS_FALL_FIRST</code><em class="property"> = 367270</em><a class="headerlink" href="#aioa2squery.AppID.ANGELS_FALL_FIRST" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/367270">Angels Fall First</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.THE_ISLE">
+<code class="sig-name descname">THE_ISLE</code><em class="property"> = 376210</em><a class="headerlink" href="#aioa2squery.AppID.THE_ISLE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/376210">The Isle</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PRIMAL_CARNAGE_EXTINCTION_OPEN_TESTING">
+<code class="sig-name descname">PRIMAL_CARNAGE_EXTINCTION_OPEN_TESTING</code><em class="property"> = 392990</em><a class="headerlink" href="#aioa2squery.AppID.PRIMAL_CARNAGE_EXTINCTION_OPEN_TESTING" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/392990">Primal Carnage Extinction Open Testing</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SQUAD">
+<code class="sig-name descname">SQUAD</code><em class="property"> = 393380</em><a class="headerlink" href="#aioa2squery.AppID.SQUAD" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/393380">Squad</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TOWER_UNITE">
+<code class="sig-name descname">TOWER_UNITE</code><em class="property"> = 394690</em><a class="headerlink" href="#aioa2squery.AppID.TOWER_UNITE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/394690">Tower Unite</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.OUT_OF_REACH_DEDICATED_SERVER">
+<code class="sig-name descname">OUT_OF_REACH_DEDICATED_SERVER</code><em class="property"> = 406800</em><a class="headerlink" href="#aioa2squery.AppID.OUT_OF_REACH_DEDICATED_SERVER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/406800">Out of Reach Dedicated Server</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ARK_SURVIVAL_OF_THE_FITTEST">
+<code class="sig-name descname">ARK_SURVIVAL_OF_THE_FITTEST</code><em class="property"> = 407530</em><a class="headerlink" href="#aioa2squery.AppID.ARK_SURVIVAL_OF_THE_FITTEST" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/407530">ARK: Survival Of The Fittest</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BATTLECREW_SPACE_PIRATES">
+<code class="sig-name descname">BATTLECREW_SPACE_PIRATES</code><em class="property"> = 411480</em><a class="headerlink" href="#aioa2squery.AppID.BATTLECREW_SPACE_PIRATES" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/411480">BATTLECREW Space Pirates</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.THE_BLACK_DEATH">
+<code class="sig-name descname">THE_BLACK_DEATH</code><em class="property"> = 412450</em><a class="headerlink" href="#aioa2squery.AppID.THE_BLACK_DEATH" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/412450">The Black Death</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SUBSISTENCE">
+<code class="sig-name descname">SUBSISTENCE</code><em class="property"> = 418030</em><a class="headerlink" href="#aioa2squery.AppID.SUBSISTENCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/418030">Subsistence</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RISING_STORM_2_VIETNAM">
+<code class="sig-name descname">RISING_STORM_2_VIETNAM</code><em class="property"> = 418460</em><a class="headerlink" href="#aioa2squery.AppID.RISING_STORM_2_VIETNAM" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/418460">Rising Storm 2: Vietnam</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BLACKWAKE">
+<code class="sig-name descname">BLACKWAKE</code><em class="property"> = 420290</em><a class="headerlink" href="#aioa2squery.AppID.BLACKWAKE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/420290">Blackwake</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.INTO_ARCADE">
+<code class="sig-name descname">INTO_ARCADE</code><em class="property"> = 422880</em><a class="headerlink" href="#aioa2squery.AppID.INTO_ARCADE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/422880">Into Arcade</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.AUTOMOBILISTA">
+<code class="sig-name descname">AUTOMOBILISTA</code><em class="property"> = 431600</em><a class="headerlink" href="#aioa2squery.AppID.AUTOMOBILISTA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/431600">Automobilista</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SQUIDS_FROM_SPACE">
+<code class="sig-name descname">SQUIDS_FROM_SPACE</code><em class="property"> = 437610</em><a class="headerlink" href="#aioa2squery.AppID.SQUIDS_FROM_SPACE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/437610">SQUIDS FROM SPACE</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.MIDAIR">
+<code class="sig-name descname">MIDAIR</code><em class="property"> = 439370</em><a class="headerlink" href="#aioa2squery.AppID.MIDAIR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/439370">Midair</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CONAN_EXILES">
+<code class="sig-name descname">CONAN_EXILES</code><em class="property"> = 440900</em><a class="headerlink" href="#aioa2squery.AppID.CONAN_EXILES" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/440900">Conan Exiles</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.FARMING_SIMULATOR_17">
+<code class="sig-name descname">FARMING_SIMULATOR_17</code><em class="property"> = 447020</em><a class="headerlink" href="#aioa2squery.AppID.FARMING_SIMULATOR_17" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/447020">Farming Simulator 17</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.FARMING_SIMULATOR_19">
+<code class="sig-name descname">FARMING_SIMULATOR_19</code><em class="property"> = 447020</em><a class="headerlink" href="#aioa2squery.AppID.FARMING_SIMULATOR_19" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/447020">Farming Simulator 19</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAY_OF_INFAMY">
+<code class="sig-name descname">DAY_OF_INFAMY</code><em class="property"> = 447820</em><a class="headerlink" href="#aioa2squery.AppID.DAY_OF_INFAMY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/447820">Day of Infamy</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAYS_OF_WAR">
+<code class="sig-name descname">DAYS_OF_WAR</code><em class="property"> = 454350</em><a class="headerlink" href="#aioa2squery.AppID.DAYS_OF_WAR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/454350">Days of War</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ZERO_G_ARENA">
+<code class="sig-name descname">ZERO_G_ARENA</code><em class="property"> = 467820</em><a class="headerlink" href="#aioa2squery.AppID.ZERO_G_ARENA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/467820">Zero G Arena</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.STRIKE_VECTOR_EX">
+<code class="sig-name descname">STRIKE_VECTOR_EX</code><em class="property"> = 476360</em><a class="headerlink" href="#aioa2squery.AppID.STRIKE_VECTOR_EX" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/476360">Strike Vector EX</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CITADEL_FORGED_WITH_FIRE">
+<code class="sig-name descname">CITADEL_FORGED_WITH_FIRE</code><em class="property"> = 487120</em><a class="headerlink" href="#aioa2squery.AppID.CITADEL_FORGED_WITH_FIRE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/487120">Citadel: Forged With Fire</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BATTALION_1944">
+<code class="sig-name descname">BATTALION_1944</code><em class="property"> = 489940</em><a class="headerlink" href="#aioa2squery.AppID.BATTALION_1944" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/489940">BATTALION 1944</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DARK_AND_LIGHT">
+<code class="sig-name descname">DARK_AND_LIGHT</code><em class="property"> = 529180</em><a class="headerlink" href="#aioa2squery.AppID.DARK_AND_LIGHT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/529180">Dark and Light</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.STATIONEERS">
+<code class="sig-name descname">STATIONEERS</code><em class="property"> = 544550</em><a class="headerlink" href="#aioa2squery.AppID.STATIONEERS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/544550">Stationeers</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.WITCH_IT">
+<code class="sig-name descname">WITCH_IT</code><em class="property"> = 559650</em><a class="headerlink" href="#aioa2squery.AppID.WITCH_IT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/559650">Witch It</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ALIEN_SWARM_REACTIVE_DROP">
+<code class="sig-name descname">ALIEN_SWARM_REACTIVE_DROP</code><em class="property"> = 563560</em><a class="headerlink" href="#aioa2squery.AppID.ALIEN_SWARM_REACTIVE_DROP" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/563560">Alien Swarm: Reactive Drop</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.INSURGENCY_SANDSTORM">
+<code class="sig-name descname">INSURGENCY_SANDSTORM</code><em class="property"> = 581320</em><a class="headerlink" href="#aioa2squery.AppID.INSURGENCY_SANDSTORM" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/581320">Insurgency: Sandstorm</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.CASPA">
+<code class="sig-name descname">CASPA</code><em class="property"> = 588120</em><a class="headerlink" href="#aioa2squery.AppID.CASPA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/588120">Capsa</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PIXARK">
+<code class="sig-name descname">PIXARK</code><em class="property"> = 593600</em><a class="headerlink" href="#aioa2squery.AppID.PIXARK" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/593600">PixARK</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.JUST_US">
+<code class="sig-name descname">JUST_US</code><em class="property"> = 612660</em><a class="headerlink" href="#aioa2squery.AppID.JUST_US" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/612660">Just Us</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.KREEDZ_CLIMBING">
+<code class="sig-name descname">KREEDZ_CLIMBING</code><em class="property"> = 626680</em><a class="headerlink" href="#aioa2squery.AppID.KREEDZ_CLIMBING" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/626680">Kreedz Climbing</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.MORDHAU">
+<code class="sig-name descname">MORDHAU</code><em class="property"> = 629760</em><a class="headerlink" href="#aioa2squery.AppID.MORDHAU" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/629760">MORDHAU</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BASE_DEFENSE">
+<code class="sig-name descname">BASE_DEFENSE</code><em class="property"> = 632730</em><a class="headerlink" href="#aioa2squery.AppID.BASE_DEFENSE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/632730">Base Defense</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.AIRMEN">
+<code class="sig-name descname">AIRMEN</code><em class="property"> = 647740</em><a class="headerlink" href="#aioa2squery.AppID.AIRMEN" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/647740">Airmen</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HEAT">
+<code class="sig-name descname">HEAT</code><em class="property"> = 656240</em><a class="headerlink" href="#aioa2squery.AppID.HEAT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/656240">Heat</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.URBAN_TERROR">
+<code class="sig-name descname">URBAN_TERROR</code><em class="property"> = 659280</em><a class="headerlink" href="#aioa2squery.AppID.URBAN_TERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/659280">Urban Terror</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.THE_WARHORN">
+<code class="sig-name descname">THE_WARHORN</code><em class="property"> = 660920</em><a class="headerlink" href="#aioa2squery.AppID.THE_WARHORN" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/660920">The Warhorn</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.JETBALL">
+<code class="sig-name descname">JETBALL</code><em class="property"> = 666590</em><a class="headerlink" href="#aioa2squery.AppID.JETBALL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/666590">Jetball</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAYS_OF_WAR_DEMO">
+<code class="sig-name descname">DAYS_OF_WAR_DEMO</code><em class="property"> = 669980</em><a class="headerlink" href="#aioa2squery.AppID.DAYS_OF_WAR_DEMO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.IOSOCCER">
+<code class="sig-name descname">IOSOCCER</code><em class="property"> = 673560</em><a class="headerlink" href="#aioa2squery.AppID.IOSOCCER" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/673560">IOSoccer</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.WORLD_WAR_3">
+<code class="sig-name descname">WORLD_WAR_3</code><em class="property"> = 674020</em><a class="headerlink" href="#aioa2squery.AppID.WORLD_WAR_3" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/674020">World War 3</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PANTROPY">
+<code class="sig-name descname">PANTROPY</code><em class="property"> = 677180</em><a class="headerlink" href="#aioa2squery.AppID.PANTROPY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/677180">Pantropy</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.OUTPOST_ZERO">
+<code class="sig-name descname">OUTPOST_ZERO</code><em class="property"> = 677480</em><a class="headerlink" href="#aioa2squery.AppID.OUTPOST_ZERO" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/677480">Outpost Zero</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HELL_LET_LOOSE">
+<code class="sig-name descname">HELL_LET_LOOSE</code><em class="property"> = 686810</em><a class="headerlink" href="#aioa2squery.AppID.HELL_LET_LOOSE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/686810">Hell Let Loose</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TACTICAL_OPERATIONS">
+<code class="sig-name descname">TACTICAL_OPERATIONS</code><em class="property"> = 690980</em><a class="headerlink" href="#aioa2squery.AppID.TACTICAL_OPERATIONS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/690980">Tactical Operations</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.PROTOBALL">
+<code class="sig-name descname">PROTOBALL</code><em class="property"> = 703970</em><a class="headerlink" href="#aioa2squery.AppID.PROTOBALL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/703970">Protoball</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.WILL_TO_LIVE_ONLINE">
+<code class="sig-name descname">WILL_TO_LIVE_ONLINE</code><em class="property"> = 707010</em><a class="headerlink" href="#aioa2squery.AppID.WILL_TO_LIVE_ONLINE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/707010">Will To Live Online</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.FROZEN_FLAME">
+<code class="sig-name descname">FROZEN_FLAME</code><em class="property"> = 715400</em><a class="headerlink" href="#aioa2squery.AppID.FROZEN_FLAME" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/715400">Frozen Flame</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BEASTS_OF_BERMUDA">
+<code class="sig-name descname">BEASTS_OF_BERMUDA</code><em class="property"> = 719890</em><a class="headerlink" href="#aioa2squery.AppID.BEASTS_OF_BERMUDA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/719890">Beasts of Bermuda</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.POST_SCRIPTUM">
+<code class="sig-name descname">POST_SCRIPTUM</code><em class="property"> = 736220</em><a class="headerlink" href="#aioa2squery.AppID.POST_SCRIPTUM" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/736220">Post Scriptum</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SPOXEL">
+<code class="sig-name descname">SPOXEL</code><em class="property"> = 746880</em><a class="headerlink" href="#aioa2squery.AppID.SPOXEL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/746880">Spoxel</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.VILLAGES">
+<code class="sig-name descname">VILLAGES</code><em class="property"> = 749820</em><a class="headerlink" href="#aioa2squery.AppID.VILLAGES" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/749820">Villages</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.EGRESS">
+<code class="sig-name descname">EGRESS</code><em class="property"> = 750800</em><a class="headerlink" href="#aioa2squery.AppID.EGRESS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/750800">Egress</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.IL_2_STURMOVIK_CLIFFS_OF_DOVER_BLITZ">
+<code class="sig-name descname">IL_2_STURMOVIK_CLIFFS_OF_DOVER_BLITZ</code><em class="property"> = 754530</em><a class="headerlink" href="#aioa2squery.AppID.IL_2_STURMOVIK_CLIFFS_OF_DOVER_BLITZ" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/754530">IL-2 Sturmovik: Cliffs of Dover Blitz</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.FEAR_THE_NIGHT">
+<code class="sig-name descname">FEAR_THE_NIGHT</code><em class="property"> = 764920</em><a class="headerlink" href="#aioa2squery.AppID.FEAR_THE_NIGHT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/764920">Fear the Night</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DARCO_REIGN_OF_ELEMENTS">
+<code class="sig-name descname">DARCO_REIGN_OF_ELEMENTS</code><em class="property"> = 789960</em><a class="headerlink" href="#aioa2squery.AppID.DARCO_REIGN_OF_ELEMENTS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/789960">DARCO - Reign of Elements</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SUNBURNT">
+<code class="sig-name descname">SUNBURNT</code><em class="property"> = 792320</em><a class="headerlink" href="#aioa2squery.AppID.SUNBURNT" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/792320">Sunburnt</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.IDENTITY">
+<code class="sig-name descname">IDENTITY</code><em class="property"> = 792990</em><a class="headerlink" href="#aioa2squery.AppID.IDENTITY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/792990">Identity</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.WARFARE_1944">
+<code class="sig-name descname">WARFARE_1944</code><em class="property"> = 793560</em><a class="headerlink" href="#aioa2squery.AppID.WARFARE_1944" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/793560">Warfare 1944</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.HELLS_NEW_WORLD">
+<code class="sig-name descname">HELLS_NEW_WORLD</code><em class="property"> = 823350</em><a class="headerlink" href="#aioa2squery.AppID.HELLS_NEW_WORLD" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/823350">HELL’S NEW WORLD</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SWORDS_OF_GURRAH">
+<code class="sig-name descname">SWORDS_OF_GURRAH</code><em class="property"> = 833090</em><a class="headerlink" href="#aioa2squery.AppID.SWORDS_OF_GURRAH" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/833090">Swords of Gurrah</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ATLAS">
+<code class="sig-name descname">ATLAS</code><em class="property"> = 834910</em><a class="headerlink" href="#aioa2squery.AppID.ATLAS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/834910">ATLAS</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.OUTLAWS_OF_THE_OLD_WEST">
+<code class="sig-name descname">OUTLAWS_OF_THE_OLD_WEST</code><em class="property"> = 840800</em><a class="headerlink" href="#aioa2squery.AppID.OUTLAWS_OF_THE_OLD_WEST" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/840800">Outlaws of the Old West</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.JABRONI_BRAWL_EPISODE_3">
+<code class="sig-name descname">JABRONI_BRAWL_EPISODE_3</code><em class="property"> = 869480</em><a class="headerlink" href="#aioa2squery.AppID.JABRONI_BRAWL_EPISODE_3" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/869480">Jabroni Brawl: Episode 3</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BATTLERUSH_2">
+<code class="sig-name descname">BATTLERUSH_2</code><em class="property"> = 871990</em><a class="headerlink" href="#aioa2squery.AppID.BATTLERUSH_2" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/871990">BattleRush 2</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.STICKYBOTS">
+<code class="sig-name descname">STICKYBOTS</code><em class="property"> = 889400</em><a class="headerlink" href="#aioa2squery.AppID.STICKYBOTS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/889400">StickyBots</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.WORLD_WAR_3_PTE">
+<code class="sig-name descname">WORLD_WAR_3_PTE</code><em class="property"> = 892520</em><a class="headerlink" href="#aioa2squery.AppID.WORLD_WAR_3_PTE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/892520">World War 3 PTE</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.利刃">
+<code class="sig-name descname">利刃</code><em class="property"> = 916940</em><a class="headerlink" href="#aioa2squery.AppID.利刃" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/916940">利刃</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.ROAD_TO_EDEN">
+<code class="sig-name descname">ROAD_TO_EDEN</code><em class="property"> = 929060</em><a class="headerlink" href="#aioa2squery.AppID.ROAD_TO_EDEN" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/929060">Road to Eden</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.STARCROSS_ARENA">
+<code class="sig-name descname">STARCROSS_ARENA</code><em class="property"> = 945870</em><a class="headerlink" href="#aioa2squery.AppID.STARCROSS_ARENA" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/945870">Starcross Arena</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BROOMSTICK_LEAGUE">
+<code class="sig-name descname">BROOMSTICK_LEAGUE</code><em class="property"> = 972780</em><a class="headerlink" href="#aioa2squery.AppID.BROOMSTICK_LEAGUE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/972780">Broomstick League</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.MEDIEVAL_TOWNS">
+<code class="sig-name descname">MEDIEVAL_TOWNS</code><em class="property"> = 982760</em><a class="headerlink" href="#aioa2squery.AppID.MEDIEVAL_TOWNS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/982760">Medieval Towns</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.RUINS_SURVIVAL">
+<code class="sig-name descname">RUINS_SURVIVAL</code><em class="property"> = 985720</em><a class="headerlink" href="#aioa2squery.AppID.RUINS_SURVIVAL" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/985720">RUINS Survival</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SURVIVAL_FRENZY">
+<code class="sig-name descname">SURVIVAL_FRENZY</code><em class="property"> = 1039870</em><a class="headerlink" href="#aioa2squery.AppID.SURVIVAL_FRENZY" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1039870">Survival Frenzy</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SPECIAL_FORCE_VR_INFINITY_WAR">
+<code class="sig-name descname">SPECIAL_FORCE_VR_INFINITY_WAR</code><em class="property"> = 1049130</em><a class="headerlink" href="#aioa2squery.AppID.SPECIAL_FORCE_VR_INFINITY_WAR" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1049130">SPECIAL FORCE VR: INFINITY WAR</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.BATTLE_GROUNDS_III">
+<code class="sig-name descname">BATTLE_GROUNDS_III</code><em class="property"> = 1057700</em><a class="headerlink" href="#aioa2squery.AppID.BATTLE_GROUNDS_III" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1057700">Battle Grounds III</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.DAY_OF_DRAGONS">
+<code class="sig-name descname">DAY_OF_DRAGONS</code><em class="property"> = 1088090</em><a class="headerlink" href="#aioa2squery.AppID.DAY_OF_DRAGONS" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1088090">Day of Dragons</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.KARL_BOOM">
+<code class="sig-name descname">KARL_BOOM</code><em class="property"> = 1099470</em><a class="headerlink" href="#aioa2squery.AppID.KARL_BOOM" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1099470">Karl BOOM</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.SIX_TEMPLES">
+<code class="sig-name descname">SIX_TEMPLES</code><em class="property"> = 1103980</em><a class="headerlink" href="#aioa2squery.AppID.SIX_TEMPLES" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1103980">Six Temples</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.TIP_OF_THE_SPEAR_TASK_FORCE_ELITE">
+<code class="sig-name descname">TIP_OF_THE_SPEAR_TASK_FORCE_ELITE</code><em class="property"> = 1148810</em><a class="headerlink" href="#aioa2squery.AppID.TIP_OF_THE_SPEAR_TASK_FORCE_ELITE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1148810">Tip of the Spear: Task Force Elite</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.AppID.GALAXY_IN_TURMOIL_DEMO">
+<code class="sig-name descname">GALAXY_IN_TURMOIL_DEMO</code><em class="property"> = 1212060</em><a class="headerlink" href="#aioa2squery.AppID.GALAXY_IN_TURMOIL_DEMO" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://store.steampowered.com/app/1212060">Galaxy in Turmoil Demo</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="game-engine-versions">
+<h2>Game Engine Versions<a class="headerlink" href="#game-engine-versions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="aioa2squery.Engine">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">Engine</code><a class="headerlink" href="#aioa2squery.Engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumeration representing the different Source Engine versions</p>
+<dl class="attribute">
+<dt id="aioa2squery.Engine.GOLDSRC">
+<code class="sig-name descname">GOLDSRC</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.Engine.GOLDSRC" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://developer.valvesoftware.com/wiki/GoldSrc">Goldsource</a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.Engine.GOLDSOURCE">
+<code class="sig-name descname">GOLDSOURCE</code><em class="property"> = 1</em><a class="headerlink" href="#aioa2squery.Engine.GOLDSOURCE" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#aioa2squery.Engine.GOLDSRC" title="aioa2squery.Engine.GOLDSRC"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GOLDSRC</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.Engine.SOURCE">
+<code class="sig-name descname">SOURCE</code><em class="property"> = 2</em><a class="headerlink" href="#aioa2squery.Engine.SOURCE" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://developer.valvesoftware.com/wiki/Source">Source</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="aioa2squery.QueryPort">
+<em class="property">class </em><code class="sig-prename descclassname">aioa2squery.</code><code class="sig-name descname">QueryPort</code><a class="headerlink" href="#aioa2squery.QueryPort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common server query port numbers</p>
+<dl class="attribute">
+<dt id="aioa2squery.QueryPort.SRCDS">
+<code class="sig-name descname">SRCDS</code><em class="property"> = 27015</em><a class="headerlink" href="#aioa2squery.QueryPort.SRCDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default <a class="reference external" href="https://developer.valvesoftware.com/wiki/Source Dedicated Server">Source Dedicated Server</a> port number</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.QueryPort.SOURCETV">
+<code class="sig-name descname">SOURCETV</code><em class="property"> = 27020</em><a class="headerlink" href="#aioa2squery.QueryPort.SOURCETV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default <a class="reference external" href="https://developer.valvesoftware.com/wiki/SourceTV">SourceTV</a> port number</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.QueryPort.HLTV">
+<code class="sig-name descname">HLTV</code><em class="property"> = 27020</em><a class="headerlink" href="#aioa2squery.QueryPort.HLTV" title="Permalink to this definition">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#aioa2squery.QueryPort.SOURCETV" title="aioa2squery.QueryPort.SOURCETV"><code class="xref py py-attr docutils literal notranslate"><span class="pre">SOURCETV</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="aioa2squery.QueryPort.INSURGENCY_SANDSTORM_QUERY_PORT">
+<code class="sig-name descname">INSURGENCY_SANDSTORM_QUERY_PORT</code><em class="property"> = 27131</em><a class="headerlink" href="#aioa2squery.QueryPort.INSURGENCY_SANDSTORM_QUERY_PORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard Insurgency Sandstorm <code class="docutils literal notranslate"><span class="pre">-QueryPort</span></code> number per the official <a class="reference external" href="https://steamcommunity.com/app/581320/discussions/1/1750106661705710565/">Basic Server Setup Guide</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">aioa2squery</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Query Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responses.html">Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom.html">Crafting Custom Queries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Enumerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#special-query-response-fields">Special Query Response Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steam-application-ids">Steam Application IDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#game-engine-versions">Game Engine Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Errors &amp; Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="custom.html" title="previous chapter">Crafting Custom Queries</a></li>
+      <li>Next: <a href="exceptions.html" title="next chapter">Errors &amp; Exceptions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, insurgency.gg.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/enumerations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
